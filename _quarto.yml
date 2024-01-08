@@ -1,0 +1,31 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "howRu"
+  subtitle: "Dans quel étage R"
+  author: 
+    - name: "Alain CORVISIER"
+      email: alain.corvisier@chapelier-fou.fr
+      affiliations:
+      - name: R tips Society
+        city: Boeschepe
+        country: France
+  date: today
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+
+
