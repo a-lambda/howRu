@@ -4,6 +4,7 @@ project:
 
 book:
   reader-mode: true
+  page-navigation: true
   title: "Dans quel étage R ?"
   subtitle: "Ou comment R envisage l'espace et le temps"
   author: 
@@ -48,7 +49,7 @@ format:
     fontsize: 1.25rem
     monofont: Fira Code
     page-layout: full
-    number-depth: 2
+    number-depth: 1
     
   pdf:
     documentclass: scrreprt
