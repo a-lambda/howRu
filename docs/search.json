@@ -16,7 +16,7 @@
   {
     "objectID": "summary.html",
     "href": "summary.html",
-    "title": "\n2  Summary\n",
+    "title": "\n4  Summary\n",
     "section": "",
     "text": "In summary, this book has no content whatsoever.\n\nCode1 + 1\n\n[1] 2"
   },
@@ -26,5 +26,12 @@
     "title": "References",
     "section": "",
     "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "structure/divers/errements.html",
+    "href": "structure/divers/errements.html",
+    "title": "3  R ment",
+    "section": "",
+    "text": "Re-mot-deler le monde\nA la frontière de nos mots nous voulons dicter l’univers. Mais que n’en disent sur cette Terre, tous ceux qu’on laisse pour sots ?\nUn renard affublé d’un corbeau, sortis d’une élégante fable, ne sauraient-ils être encore plus beaux, à la lumière de leur corde sensible ?\nLes êtres à nos yeux invisibles ne sont-ils point, à fleur de peau, des témoins beaucoup plus attachés, à leur terrier que l’on toise de haut ?\nCorbeau, renard, ou piètre vermisseau, pâles images réduites à ces lignes, il se trame dans vos modestes clairières bien plus que ce simple univers.\nNos lisières lexicales occultent l’inentendu et nous confondent en lettres convenues. Alors brisons, de nos rêves, toutes les valeurs, et révélons ensemble cet autre ailleurs."
   }
 ]

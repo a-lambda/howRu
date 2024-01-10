@@ -24,6 +24,9 @@ book:
     - part: structure/temps.qmd
       chapters: 
         - structure/temps/contexte.qmd
+    - part: structure/divers.qmd
+      chapters: 
+        - structure/divers/errements.qmd
     - summary.qmd
     - references.qmd
 
