@@ -1,9 +1,9 @@
-# Preface {.unnumbered}
+# Préface {.unnumbered}
 
-This is a Quarto book.
+Ce livre est réalisé à partir de [Quarto](https://quarto.org/docs/books), système open-source de publication scientifique et technique.
+<br>
+C'est aussi le lieu où je rendrai compte de fonctionnalités offertes par [Github](https://github.com/), service web d'hébergement de de gestion de développement de logiciels, notamment :
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+- Les [Github Pages](https://pages.github.com/) permettant d'héberger cet ouvrage
+- Les [Github Actions](https://docs.github.com/fr/actions), fonctionnalités avancées offertes par la plateforme Github
 
-```{r}
-1 + 1
-```

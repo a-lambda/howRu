@@ -3,19 +3,27 @@ project:
   output-dir: docs
 
 book:
-  title: "howRu"
-  subtitle: "Dans quel étage R"
+  reader-mode: true
+  title: "Dans quel étage R ?"
+  subtitle: "Ou comment R envisage l'espace et le temps"
   author: 
     - name: "Alain CORVISIER"
       email: alain.corvisier@chapelier-fou.fr
-      affiliations:
-      - name: R tips Society
-        city: Boeschepe
-        country: France
   date: today
+  sidebar: 
+    style: floating
+  repo-url: https://github.com/a-lambda/howRu/
+  repo-actions: [edit]
+  search: true
   chapters:
     - index.qmd
     - intro.qmd
+    - part: structure/espace.qmd
+      chapters: 
+        - structure/espace/contexte.qmd
+    - part: structure/temps.qmd
+      chapters: 
+        - structure/temps/contexte.qmd
     - summary.qmd
     - references.qmd
 
@@ -23,7 +31,22 @@ bibliography: references.bib
 
 format:
   html:
-    theme: cosmo
+    cover-image: images/H1_hasard_maths_Alain.jpg
+    theme: 
+      light: 
+        - cosmo
+        - css/fira-code.css
+      dark:
+        - slate
+    code-fold: true
+    code-link: true
+    #code-tools: true
+    toc: true
+    fontsize: 1.25rem
+    monofont: Fira Code
+    page-layout: full
+    number-depth: 2
+    
   pdf:
     documentclass: scrreprt
 
