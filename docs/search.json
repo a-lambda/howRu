@@ -18,7 +18,7 @@
     "href": "summary.html",
     "title": "\n4  Summary\n",
     "section": "",
-    "text": "In summary, this book has no content whatsoever.\n\nCode1 + 1\n\n[1] 2"
+    "text": "In summary, this book has no content whatsoever.\n\nq &lt;- rnorm(10)\nr &lt;- sample.int(n = 6, size = 10, replace = TRUE)\nq + r\n\n [1]  2.4993269  0.2381483  5.6486028  4.0294764  6.7862931  2.3025514\n [7]  1.9288117  5.1872923 -1.0415215  6.3549013\n\n\n\n\n\n\n\n\nNote\n\n\n\nNe pas oublier de cocher l’option Create a git repository pour la gestion des versions de votre site. Git aura été préalablement installé depuis https://git-scm.com/downloads"
   },
   {
     "objectID": "references.html",
@@ -33,5 +33,12 @@
     "title": "3  R ment",
     "section": "",
     "text": "Re-mot-deler le monde\nA la frontière de nos mots nous voulons dicter l’univers. Mais que n’en disent sur cette Terre, tous ceux qu’on laisse pour sots ?\nUn renard affublé d’un corbeau, sortis d’une élégante fable, ne sauraient-ils être encore plus beaux, à la lumière de leur corde sensible ?\nLes êtres à nos yeux invisibles ne sont-ils point, à fleur de peau, des témoins beaucoup plus attachés, à leur terrier que l’on toise de haut ?\nCorbeau, renard, ou piètre vermisseau, pâles images réduites à ces lignes, il se trame dans vos modestes clairières bien plus que ce simple univers.\nNos lisières lexicales occultent l’inentendu et nous confondent en lettres convenues. Alors brisons, de nos rêves, toutes les valeurs, et révélons ensemble cet autre ailleurs."
+  },
+  {
+    "objectID": "structure/espace/contexte.html",
+    "href": "structure/espace/contexte.html",
+    "title": "\n1  Contexte\n",
+    "section": "",
+    "text": "Linking to GEOS 3.9.3, GDAL 3.5.2, PROJ 8.2.1; sf_use_s2() is TRUE\n\n\n\nworld_asia &lt;- world[world$continent == \"Asia\", ]\nasia &lt;- st_union(world_asia)\nbbox &lt;- st_bbox(world)\nplot(\n  asia, \n  xlim = c(bbox[\"xmin\"], bbox[\"xmax\"]), \n  ylim = c(bbox[\"ymin\"],bbox[\"ymax\"]),\n  col = \"red\",\n  graticule = TRUE,\n  axes = TRUE\n)\n\nplot(\n  st_geometry(world), \n  add = TRUE\n)"
   }
 ]

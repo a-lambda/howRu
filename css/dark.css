@@ -1,0 +1,24 @@
+/*-- scss:defaults --*/
+
+/*-- Define colors for later use --*/
+
+/*--
+$link-color: #248CFC;
+$code-color: #bb8acf;
+$secondary: #505050;
+--*/
+
+/*-- Define Bootstrap color variables --*/
+
+/*--
+// Background color of inline code
+$code-bg: $secondary;
+
+// Background color of chunk code
+$code-block-bg: $secondary;
+--*/
+
+
+/*-- scss:rules --*/
+.dark-mode { display: block; }
+.light-mode { display: none; }

@@ -1,3 +1,33 @@
 ---
 title: "Contexte"
 ---
+
+```{r}
+#| label: load-package
+#| echo: false
+
+library(sf)
+library(spData)
+```
+
+```{r}
+#| label: asia
+world_asia <- world[world$continent == "Asia", ]
+asia <- st_union(world_asia)
+bbox <- st_bbox(world)
+plot(
+  asia, 
+  xlim = c(bbox["xmin"], bbox["xmax"]), 
+  ylim = c(bbox["ymin"],bbox["ymax"]),
+  col = "red",
+  graticule = TRUE,
+  axes = TRUE
+)
+
+plot(
+  st_geometry(world), 
+  add = TRUE
+)
+
+```
+

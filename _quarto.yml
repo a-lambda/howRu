@@ -40,16 +40,19 @@ format:
       light: 
         - cosmo
         - css/fira-code.css
+        - css/light.css
       dark:
         - slate
-    code-fold: true
+        - css/dark.css
+    #code-fold: true
     code-link: true
     #code-tools: true
     toc: true
-    fontsize: 1.25rem
-    monofont: Fira Code
-    page-layout: full
+    #fontsize: 1.25rem
+    #monofont: Fira Code
+    #page-layout: full
     number-depth: 1
+    #css: css/styles.css
     
   pdf:
     documentclass: scrreprt
