@@ -1,0 +1,16 @@
+{
+  "hash": "79889ed605a982d2517170598b388fbe",
+  "result": {
+    "markdown": "---\ntitle: \"Contexte\"\n---\n\n::: {.cell}\n::: {.cell-output .cell-output-stderr}\n```\nLinking to GEOS 3.9.3, GDAL 3.5.2, PROJ 8.2.1; sf_use_s2() is TRUE\n```\n:::\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nworld_asia <- world[world$continent == \"Asia\", ]\nasia <- st_union(world_asia)\nbbox <- st_bbox(world)\nplot(\n  asia, \n  xlim = c(bbox[\"xmin\"], bbox[\"xmax\"]), \n  ylim = c(bbox[\"ymin\"],bbox[\"ymax\"]),\n  col = \"red\",\n  graticule = TRUE,\n  axes = TRUE\n)\n\nplot(\n  st_geometry(world), \n  add = TRUE\n)\n```\n\n::: {.cell-output-display}\n![](contexte_files/figure-html/asia-1.png){width=672}\n:::\n:::\n",
+    "supporting": [
+      "contexte_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

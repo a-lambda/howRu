@@ -11,7 +11,7 @@
     "href": "intro.html",
     "title": "Introduction",
     "section": "",
-    "text": "Je vais tenter de regrouper dans les pages qui vont suivre l’ensemble des informations que je juge pertinente concernant le domaine des statistiques associées aux données temporelles et géospatiales. \nJe le fais en français parce je juge que des lacunes sont flagrantes concernant les ouvrages de ce type utilisant cette langue. \nCet ouvrage se constituera de manière cahotique et ne pourra jamais faire figure, dans un premier temps, de texte de référence. Il s’agit de prime abord plutôt d’un essai qui deviendra, au cours des mois qui vont suivre, utile et légitime, ou pas du tout. \nDonc aucune prétention à venir …"
+    "text": "Je vais tenter de regrouper dans les pages qui vont suivre l’ensemble des informations que je juge pertinente concernant le domaine des statistiques associées aux données temporelles et géospatiales. \nJe le fais en français parce je juge que des lacunes sont flagrantes concernant les ouvrages de ce type utilisant cette langue. \nPetit bémol sur cette dernière remarque. Il serait en effet dangereux, dans le cadre d’un apprentissage, de vouloir traduire l’intégralité des termes techniques, d’origine anglaise pour la majorité. Ce serait même contre-productif, car cette nomenclature métier répond à des normes internationales. \nDernière remarque, cet ouvrage se constituera de manière cahotique et ne pourra jamais faire figure, dans un premier temps, de texte de référence. Il s’agit de prime abord plutôt d’un essai qui deviendra, au cours des mois qui vont suivre, utile et légitime, ou pas du tout. \nDonc aucune prétention à venir …"
   },
   {
     "objectID": "summary.html",
@@ -40,5 +40,26 @@
     "title": "\n1  Contexte\n",
     "section": "",
     "text": "Linking to GEOS 3.9.3, GDAL 3.5.2, PROJ 8.2.1; sf_use_s2() is TRUE\n\n\n\nworld_asia &lt;- world[world$continent == \"Asia\", ]\nasia &lt;- st_union(world_asia)\nbbox &lt;- st_bbox(world)\nplot(\n  asia, \n  xlim = c(bbox[\"xmin\"], bbox[\"xmax\"]), \n  ylim = c(bbox[\"ymin\"],bbox[\"ymax\"]),\n  col = \"red\",\n  graticule = TRUE,\n  axes = TRUE\n)\n\nplot(\n  st_geometry(world), \n  add = TRUE\n)"
+  },
+  {
+    "objectID": "structure/espace.html",
+    "href": "structure/espace.html",
+    "title": "ESPACE",
+    "section": "",
+    "text": "Une introduction aux “simple features”\nLes “simple features” (que l’on pourrait traduire par “fonctionnalités de base”) font partie d’une norme ouverte approuvées par l’Open Geospatial Consortium (OGC). \nC’est un modèle hiérarchique de données qui regroupe 18 types géométriques. Seulement 7 sont utilisés dans la grande majorité des recherches géographiques ; ces types géométriques de base sont intégralement implémentés par le package sf de R.\nIl est possible de retrouver l’ensemble des types géométriques dans le PostGIS manual."
+  },
+  {
+    "objectID": "structure/espace.html#prérequis",
+    "href": "structure/espace.html#prérequis",
+    "title": "ESPACE",
+    "section": "Prérequis",
+    "text": "Prérequis\nDes prérequis logiciels sont nécessaires pour explorer les domaines identifiés dans ce chapitre :\n\nune version récente de R (R 4.3.2 ou une version plus récente).\n\nIl est recommandé d’expérimenter par soi-même les sujets abordés plus bas pour renforcer ses compétences géo-computationnelles.\nDans ce cadre, il est recommandé d’installer un envrironnement de développement (IDE) tel que RStudio ou VS Code pour écrire/exécuter/tester le code R.\nNous recommandons également dans ce cadre l’usage des projets Rstudio, ou les espaces de travail VS Code ou tout autre système équivalent pour gérer vos projets."
+  },
+  {
+    "objectID": "structure/espace.html#une-introduction-aux-simple-features",
+    "href": "structure/espace.html#une-introduction-aux-simple-features",
+    "title": "ESPACE",
+    "section": "Une introduction aux “simple features”",
+    "text": "Une introduction aux “simple features”\nLes “simple features” (que l’on pourrait traduire par “fonctionnalités de base”) font partie d’une norme ouverte homologuée par l’Open Geospatial Consortium (OGC). \nC’est un modèle hiérarchique de données qui regroupe 18 types géométriques. Seulement 7 sont utilisés dans la grande majorité des recherches géographiques ; ces types géométriques de base sont intégralement implémentés par le package sf de R.\nIl est possible de retrouver l’ensemble des 18 types géométriques dans le manuel PostGIS."
   }
 ]
