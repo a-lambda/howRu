@@ -12,15 +12,27 @@ Il est recommandé d'expérimenter par soi-même les sujets abordés plus bas po
 
 Dans ce cadre, il est recommandé d'installer un envrironnement de développement (IDE) tel que [RStudio](https://posit.co/download/rstudio-desktop/#download) ou [VS Code](https://github.com/REditorSupport/vscode-R) pour écrire/exécuter/tester le code R.
 
-Nous recommandons également dans ce cadre l'usage des [projets Rstudio](https://r4ds.had.co.nz/workflow-projects.html), ou les [espaces de travail VS Code](https://code.visualstudio.com/docs/editor/workspaces) ou tout autre système équivalent pour gérer vos projets.
+Nous recommandons également l'usage des [projets Rstudio](https://r4ds.had.co.nz/workflow-projects.html), ou les [espaces de travail VS Code](https://code.visualstudio.com/docs/editor/workspaces) ou tout autre système équivalent pour gérer vos projets de manière normalisée.
 
 ## Une introduction aux "simple features"
 
 Les "simple features" (que l'on pourrait traduire par "fonctionnalités de base") font partie d'une [norme ouverte](http://portal.opengeospatial.org/files/?artifact_id=25355) homologuée par l'Open Geospatial Consortium ([OGC](https://www.ogc.org/)). <br>
 
-C'est un modèle hiérarchique de données qui regroupe 18 types géométriques. Seulement 7 sont utilisés dans la grande majorité des recherches géographiques ; ces types géométriques de base sont intégralement implémentés par le package sf de R.
+C'est un modèle hiérarchique de données qui regroupe 18 types géométriques. Seulement 7 sont utilisés dans la grande majorité des recherches géographiques ; ces types géométriques de base sont intégralement implémentés par le package [sf](https://r-spatial.github.io/sf/) de R.
 
 Il est possible de retrouver l'ensemble des 18 types géométriques dans le [manuel PostGIS](http://postgis.net/docs/using_postgis_dbmanagement.html).
+
+Le paquet `sf` fournit les classes des vecteurs géographiques et une interface en ligne de commande permettant l'accès aux fonctionnalités de géo-computation offertes par les librairies de bas-niveau suivantes :
+
+- [GDAL](https://gdal.org/)\index{GDAL}, pour lire, écrire et manipuler un nombre important de formats de données géographiques,
+
+- [PROJ](https://proj.org/), une puissante librairie pour la transformations de systèmes de coordonnées, 
+
+- [GEOS](https://libgeos.org/)\index{GEOS}, un moteur de géométrie planaire destinés aux calculs de tampons (buffers) par exemple, aussi bien que des centroïdes pour des données projetées suivant un CRS (Coordinate Reference Systems) donné,
+
+- [S2](https://s2geometry.io/), un moteur de géométrie sphérique écrit en C++ et développé par Google, via le package [s2](https://r-spatial.github.io/s2/).
+
+
 
 ```{r}
 
