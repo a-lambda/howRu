@@ -33,9 +33,15 @@ Le paquet `sf` fournit les classes des vecteurs géographiques et une interface 
 - [S2](https://s2geometry.io/), un moteur de géométrie sphérique écrit en C++ et développé par Google, via le package [s2](https://r-spatial.github.io/s2/).
 
 
-
 ```{r}
-
+#| label: load-sf
+library(sf)
 ```
 
+Le message visible au chargement du package `sf` décline explicitement les liens avec ces librairies et montre aussi l'activation par défaut des fonctionnalités du paquet s2.
+
+```{r}
+#| label: sf-dependencies
+#tools::package_dependencies("sf", recursive = TRUE)
+```
 

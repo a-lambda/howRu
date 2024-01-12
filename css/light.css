@@ -4,19 +4,25 @@
 
 /*--
 $link-color: #248CFC;
-$secondary: #F3DFA2;
 --*/
+$secondary: #F3DFA2;
 
 /*-- Define Bootstrap color variables --*/
 
-/*--
+/*-- 
 // Background color of inline code
-$code-bg: $secondary;
-
-// Background color of chunk code
-$code-block-bg: $secondary;
+$code-bg: "gray";
 --*/
+// Background color of chunk code
+$code-block-fg: #000000;
+$code-block-bg: #04040408;
+
 
 /*-- scss:rules --*/
 .light-mode { display: block; }
 .dark-mode { display: none; }
+
+.output {
+  color: yellow;
+  background-color: lightblue;
+}
