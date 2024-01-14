@@ -23,7 +23,6 @@ $code-block-bg: #04040408;
 .dark-mode { display: none; }
 
 .output {
-  font-family: 'Verdana';
   font-size: 0.7rem;
   font-style: italic;
   font-weight: 300;
