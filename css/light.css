@@ -23,6 +23,10 @@ $code-block-bg: #04040408;
 .dark-mode { display: none; }
 
 .output {
-  color: yellow;
-  background-color: lightblue;
+  font-family: 'Verdana';
+  font-size: 0.7rem;
+  font-style: italic;
+  font-weight: 300;
+  color: #E02020;
+  background-color: #E0F8FF;
 }

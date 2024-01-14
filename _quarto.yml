@@ -49,7 +49,7 @@ format:
     #code-tools: true
     toc: true
     #fontsize: 1.25rem
-    #monofont: Fira Code
+    monofont: Fira Code
     #page-layout: full
     number-depth: 1
     #css: css/styles.css

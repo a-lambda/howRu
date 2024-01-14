@@ -2,26 +2,65 @@
 title: "Contexte"
 ---
 
+## Un exemple pour cerner quelques concepts
+
+Nous allons utiliser le dataset `world` présent dans le package `spData`
+
 ```{r}
 #| label: load-package
 #| echo: false
-
+#| warning: false
 library(sf)
 library(spData)
 ```
+
+```{r}
+#| label: world-class
+
+class(world)
+```
+
+Il s'agit bien d'un objet de type dataframe.
+
+```{r}
+#| label: world-names
+#| class-output: output
+#| 
+head(world)[1:3,]
+```
+
+
+
 
 ```{r}
 #| label: asia
 world_asia <- world[world$continent == "Asia", ]
 asia <- st_union(world_asia)
 bbox <- st_bbox(world)
+
+asia
+
+world
+
+```
+
+```{r}
+#| label: asia-world_plot
+#| fig-cap: "L' Asie dans le Monde. La zone asiatique colorée en rouge a été affichée avec les limites de cadre (bounding box) de la carte du Monde. L'ensemble des pays du Monde avec leurs frontières respectives ont été ensuite affichés au-dessus de la zone déjà tracée."
+#| cap-location: margin
+#| fig-width: 10
+#| fig-height: 6
+#| fig-format: svg
+#| layout-align: center
+
 plot(
   asia, 
   xlim = c(bbox["xmin"], bbox["xmax"]), 
   ylim = c(bbox["ymin"],bbox["ymax"]),
   col = "red",
   graticule = TRUE,
-  axes = TRUE
+  axes = TRUE,
+  main = "Les pays d'Asie"
 )
 
 plot(
@@ -31,3 +70,10 @@ plot(
 
 ```
 
+
+
+::: {.callout-note}
+
+Les mots sont ici malaisés à formuler pour des éléments graphiques simples (bounding box) c'est ce qui fait ici la difficulté de la transmission correcte des informations pour une personne novice dans le domaine.
+
+:::

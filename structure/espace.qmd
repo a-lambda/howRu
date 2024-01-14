@@ -35,10 +35,30 @@ Le paquet `sf` fournit les classes des vecteurs géographiques et une interface 
 
 ```{r}
 #| label: load-sf
+#| class-output: output
 library(sf)
 ```
 
 Le message visible au chargement du package `sf` décline explicitement les liens avec ces librairies et montre aussi l'activation par défaut des fonctionnalités du paquet s2.
+
+Les fonctionnalités offertes par le package `sf` sont correctement documentées au travers de 7 vignettes visibles hors connexion comme suit :
+
+```{r}
+#| label: sf-vignettes
+#| message: false
+#| eval: false
+vignette(package = "sf") # pour voir quels vignettes sont disponibles
+vignette("sf1") # une introduction au package
+vignette("sf2") # lire, écrire, et convertir les "simple features"
+vignette("sf3") # manipuler les géométries des "simple features"
+vignette("sf4") # manipuler le "simple features"
+vignette("sf5") # afficher les "simple features"
+vignette("sf6") # points divers de la documentation
+vignette("sf7") # opérations de géométrie sphérique
+```
+
+
+
 
 ```{r}
 #| label: sf-dependencies

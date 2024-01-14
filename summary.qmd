@@ -6,6 +6,8 @@ In summary, this book has no content whatsoever.
 #| class-output: output
 q <- rnorm(10)
 r <- sample.int(n = 6, size = 10, replace = TRUE)
+test <- "test de font"
+test
 q + r
 ```
 
@@ -15,3 +17,8 @@ q + r
 Ne pas oublier de cocher l'option `Create a git repository` pour la gestion des versions de votre site. Git aura été préalablement installé depuis [https://git-scm.com/downloads](https://git-scm.com/downloads)
 
 :::
+
+^[
+Ce texte est invisible ?
+]
+ou pas

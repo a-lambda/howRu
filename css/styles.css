@@ -20,10 +20,11 @@
       font-family: 'Fira Code';
       font-style: normal;
       font-weight: 400;
-      font-size: 0.9rem;
+      font-size: 1.9rem;
 }
 
 .output {
+  font-family: 'Fira Code';
   color: green;
   background-color: black;
 }

@@ -13,12 +13,20 @@ $secondary: #505050;
 /*--
 // Background color of inline code
 $code-bg: $secondary;
-
-// Background color of chunk code
-$code-block-bg: $secondary;
 --*/
+// Background color of chunk code
+$code-block-bg: #102028;
+
 
 
 /*-- scss:rules --*/
 .dark-mode { display: block; }
 .light-mode { display: none; }
+
+.output {
+  font-size: 0.85rem;
+  font-style: italic;
+  font-weight: 300;
+  color: #F8F810DD;
+  background-color: #202020;
+}
