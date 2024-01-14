@@ -1,0 +1,11 @@
+# Prérequis {.unnumbered}
+
+Des prérequis logiciels sont nécessaires pour explorer les domaines identifiés dans ce chapitre :
+
+- une version récente de R (R [4.3.2](https://stat.ethz.ch/pipermail/r-announce/2023/000697.html) ou une version plus récente).
+
+Il est recommandé d'expérimenter par soi-même les sujets abordés plus bas pour renforcer ses compétences géo-computationnelles.
+
+Dans ce cadre, il est recommandé d'installer un envrironnement de développement (IDE) tel que [RStudio](https://posit.co/download/rstudio-desktop/#download) ou [VS Code](https://github.com/REditorSupport/vscode-R) pour écrire/exécuter/tester le code R.
+
+Nous recommandons également l'usage des [projets Rstudio](https://r4ds.had.co.nz/workflow-projects.html), ou les [espaces de travail VS Code](https://code.visualstudio.com/docs/editor/workspaces) ou tout autre système équivalent pour gérer vos projets de manière normalisée.

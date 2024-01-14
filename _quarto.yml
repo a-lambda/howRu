@@ -19,15 +19,14 @@ book:
   chapters:
     - index.qmd
     - intro.qmd
-    - part: structure/espace.qmd
+    - href: prerequis.qmd
+      text: Prérequis
+    - part: "Premier contact"
       chapters: 
-        - structure/espace/contexte.qmd
-    - part: structure/temps.qmd
+        - structure/01_sf.qmd
+    - part: "Digressions"
       chapters: 
-        - structure/temps/contexte.qmd
-    - part: structure/divers.qmd
-      chapters: 
-        - structure/divers/errements.qmd
+        - structure/99_errements.qmd
     - summary.qmd
     - references.qmd
 
@@ -53,7 +52,6 @@ format:
     #page-layout: full
     number-depth: 1
     #css: css/styles.css
-    
   pdf:
     documentclass: scrreprt
 

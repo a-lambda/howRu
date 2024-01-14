@@ -23,9 +23,11 @@ $code-block-bg: #04040408;
 .dark-mode { display: none; }
 
 .output {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   font-style: italic;
   font-weight: 300;
   color: #E02020;
-  background-color: #E0FFFF;
+  background-color: #F0FFFF;
+/*--  column-width: 120; --*/
+  column-width: 100;
 }

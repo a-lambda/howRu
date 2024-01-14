@@ -1,18 +1,53 @@
 ---
-title: "ESPACE"
+title: Entrée en matière 
 ---
 
-## Prérequis
+## Un exemple pour illustrer
 
-Des prérequis logiciels sont nécessaires pour explorer les domaines identifiés dans ce chapitre :
+Nous allons nous intéresser au jeu de données `world` présent dans le package `spData`
 
-- une version récente de R (R [4.3.2](https://stat.ethz.ch/pipermail/r-announce/2023/000697.html) ou une version plus récente).
+```{r}
+#| label: load-package
+#| echo: false
+#| warning: false
+library(sf)
+library(spData)
+```
 
-Il est recommandé d'expérimenter par soi-même les sujets abordés plus bas pour renforcer ses compétences géo-computationnelles.
+```{r}
+#| label: world-class
+#| class-output: output
+class(world)
+dim(world)
+names(world)
+```
 
-Dans ce cadre, il est recommandé d'installer un envrironnement de développement (IDE) tel que [RStudio](https://posit.co/download/rstudio-desktop/#download) ou [VS Code](https://github.com/REditorSupport/vscode-R) pour écrire/exécuter/tester le code R.
+Il s'agit bien d'un objet de type dataframe composé de 177 pays et 11 colonnes.
+Mais c'est aussi un objet de classe `sf`^[simple feature] <br>
 
-Nous recommandons également l'usage des [projets Rstudio](https://r4ds.had.co.nz/workflow-projects.html), ou les [espaces de travail VS Code](https://code.visualstudio.com/docs/editor/workspaces) ou tout autre système équivalent pour gérer vos projets de manière normalisée.
+Sélectionnons un sous-ensemble de `world` que nous appellerons `world_mini`
+
+```{r}
+#| label: world-mini
+#| class-output: output
+
+world_mini <- world[1:2, 1:3]
+world_mini
+```
+
+Comparé à un dataframe standard, un objet de type `sf` inclut des méta-données géographiques additionnelles :
+
+- `Geometry type`
+- `Dimension`
+- `Bounding box`
+- `Geodetic CRS`, information lié au sytème de coordonnées de référence
+
+ainsi que la présence d'une colonne `geom` (nommé parfois aussi `geometry`) comportant des éléments géométriques.
+
+Cette colonne particulière est une colonne de classe `sfc`^[simple feature column]. <br>
+
+A leurs tours les objets de type `sfc` sont composés d'un ou plusieurs objets de type `sfg`^[simple feature geometry].
+
 
 ## Une introduction aux "simple features"
 
@@ -57,11 +92,60 @@ vignette("sf6") # points divers de la documentation
 vignette("sf7") # opérations de géométrie sphérique
 ```
 
+```{r}
+#| label: sf-dependencies
+#| message: false
+#| include: false
+#tools::package_dependencies("sf", recursive = TRUE)
+```
+
+## Les types géométriques
+
 
 
 
 ```{r}
-#| label: sf-dependencies
-#tools::package_dependencies("sf", recursive = TRUE)
+#| label: asia
+world_asia <- world[world$continent == "Asia", ]
+asia <- st_union(world_asia)
+bbox <- st_bbox(world)
+
+asia
+
+world
+
 ```
 
+```{r}
+#| label: asia-world_plot
+#| fig-cap: "L' Asie dans le Monde. La zone asiatique colorée en rouge a été affichée avec les limites de cadre (bounding box) de la carte du Monde. L'ensemble des pays du Monde avec leurs frontières respectives ont été ensuite affichés au-dessus de la zone déjà tracée."
+#| cap-location: margin
+#| fig-width: 10
+#| fig-height: 6
+#| fig-format: svg
+#| layout-align: center
+
+plot(
+  asia, 
+  xlim = c(bbox["xmin"], bbox["xmax"]), 
+  ylim = c(bbox["ymin"],bbox["ymax"]),
+  col = "red",
+  graticule = TRUE,
+  axes = TRUE,
+  main = "Les pays d'Asie"
+)
+
+plot(
+  st_geometry(world), 
+  add = TRUE
+)
+
+```
+
+
+
+::: {.callout-note}
+
+Les mots sont ici malaisés à formuler pour des éléments graphiques simples (bounding box) c'est ce qui fait ici la difficulté de la transmission correcte des informations pour une personne novice dans le domaine.
+
+:::
