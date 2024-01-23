@@ -50,7 +50,7 @@ format:
     #fontsize: 1.25rem
     monofont: Fira Code
     #page-layout: full
-    number-depth: 1
+    number-depth: 2
     #css: css/styles.css
   pdf:
     documentclass: scrreprt

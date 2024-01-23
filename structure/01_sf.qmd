@@ -1,6 +1,4 @@
----
-title: Entrée en matière 
----
+# Entrée en matière 
 
 ## Un exemple pour illustrer
 
@@ -57,6 +55,8 @@ C'est un modèle hiérarchique de données qui regroupe 18 types géométriques.
 
 Il est possible de retrouver l'ensemble des 18 types géométriques dans le [manuel PostGIS](http://postgis.net/docs/using_postgis_dbmanagement.html).
 
+### Le package sf
+
 Le paquet `sf` fournit les classes des vecteurs géographiques et une interface en ligne de commande permettant l'accès aux fonctionnalités de géo-computation offertes par les librairies de bas-niveau suivantes :
 
 - [GDAL](https://gdal.org/)\index{GDAL}, pour lire, écrire et manipuler un nombre important de formats de données géographiques,
@@ -99,7 +99,34 @@ vignette("sf7") # opérations de géométrie sphérique
 #tools::package_dependencies("sf", recursive = TRUE)
 ```
 
-## Les types géométriques
+### Les types géométriques
+
+Parmi les 18 types géométriques que gère le package `sf` nous allons nous focaliser sur les plus communément utilisés :
+
+- `POINT` et `MULTIPOINT`,
+- `LINESTRING` et `MULTILINESTRING`,
+- `POLYGON` et `MULTIPOLYGON`,
+- `GEOMETRYCOLLECTION`
+
+Les encodages standards utilisés pour enregistrer ces sfg^[simple feature geometries] sont :
+
+- WKB (well-known binary), constitué de chaînes hexadécimales
+- WKT (well-known text)
+
+SIG^[système d'information géographique] (ou GIS en anglais) et les bases de données spatiales utilisent l'encodage WKB pour transférer et stocker les objets géométriques. <br>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

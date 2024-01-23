@@ -202,9 +202,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-<li><a href="#un-exemple-pour-illustrer" id="toc-un-exemple-pour-illustrer" class="nav-link active" data-scroll-target="#un-exemple-pour-illustrer">Un exemple pour illustrer</a></li>
-  <li><a href="#une-introduction-aux-simple-features" id="toc-une-introduction-aux-simple-features" class="nav-link" data-scroll-target="#une-introduction-aux-simple-features">Une introduction aux “simple features”</a></li>
+<li><a href="#un-exemple-pour-illustrer" id="toc-un-exemple-pour-illustrer" class="nav-link active" data-scroll-target="#un-exemple-pour-illustrer"><span class="header-section-number">1.1</span> Un exemple pour illustrer</a></li>
+  <li>
+<a href="#une-introduction-aux-simple-features" id="toc-une-introduction-aux-simple-features" class="nav-link" data-scroll-target="#une-introduction-aux-simple-features"><span class="header-section-number">1.2</span> Une introduction aux “simple features”</a>
+  <ul class="collapse">
+<li><a href="#le-package-sf" id="toc-le-package-sf" class="nav-link" data-scroll-target="#le-package-sf">Le package sf</a></li>
   <li><a href="#les-types-g%C3%A9om%C3%A9triques" id="toc-les-types-géométriques" class="nav-link" data-scroll-target="#les-types-g%C3%A9om%C3%A9triques">Les types géométriques</a></li>
+  </ul>
+</li>
   </ul><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/a-lambda/howRu/edit/main/structure/01_sf.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
@@ -224,7 +229,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
-</header><section id="un-exemple-pour-illustrer" class="level2"><h2 class="anchored" data-anchor-id="un-exemple-pour-illustrer">Un exemple pour illustrer</h2>
+</header><section id="un-exemple-pour-illustrer" class="level2" data-number="1.1"><h2 data-number="1.1" class="anchored" data-anchor-id="un-exemple-pour-illustrer">
+<span class="header-section-number">1.1</span> Un exemple pour illustrer</h2>
 <p>Nous allons nous intéresser au jeu de données <code>world</code> présent dans le package <code>spData</code></p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">world</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -270,10 +276,12 @@ Geodetic CRS:  WGS 84
 <p>ainsi que la présence d’une colonne <code>geom</code> (nommé parfois aussi <code>geometry</code>) comportant des éléments géométriques.</p>
 <p>Cette colonne particulière est une colonne de classe <code>sfc</code><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. <br></p>
 <p>A leurs tours les objets de type <code>sfc</code> sont composés d’un ou plusieurs objets de type <code>sfg</code><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
-</section><section id="une-introduction-aux-simple-features" class="level2"><h2 class="anchored" data-anchor-id="une-introduction-aux-simple-features">Une introduction aux “simple features”</h2>
+</section><section id="une-introduction-aux-simple-features" class="level2 page-columns page-full" data-number="1.2"><h2 data-number="1.2" class="anchored" data-anchor-id="une-introduction-aux-simple-features">
+<span class="header-section-number">1.2</span> Une introduction aux “simple features”</h2>
 <p>Les “simple features” (que l’on pourrait traduire par “fonctionnalités de base”) font partie d’une <a href="http://portal.opengeospatial.org/files/?artifact_id=25355">norme ouverte</a> homologuée par l’Open Geospatial Consortium (<a href="https://www.ogc.org/">OGC</a>). <br></p>
 <p>C’est un modèle hiérarchique de données qui regroupe 18 types géométriques. Seulement 7 sont utilisés dans la grande majorité des recherches géographiques ; ces types géométriques de base sont intégralement implémentés par le package <a href="https://r-spatial.github.io/sf/">sf</a> de R.</p>
 <p>Il est possible de retrouver l’ensemble des 18 types géométriques dans le <a href="http://postgis.net/docs/using_postgis_dbmanagement.html">manuel PostGIS</a>.</p>
+<section id="le-package-sf" class="level3"><h3 class="anchored" data-anchor-id="le-package-sf">Le package sf</h3>
 <p>Le paquet <code>sf</code> fournit les classes des vecteurs géographiques et une interface en ligne de commande permettant l’accès aux fonctionnalités de géo-computation offertes par les librairies de bas-niveau suivantes :</p>
 <ul>
 <li><p><a href="https://gdal.org/">GDAL</a>, pour lire, écrire et manipuler un nombre important de formats de données géographiques,</p></li>
@@ -296,7 +304,23 @@ Geodetic CRS:  WGS 84
 <span><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html">vignette</a></span><span class="op">(</span><span class="st">"sf6"</span><span class="op">)</span> <span class="co"># points divers de la documentation</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html">vignette</a></span><span class="op">(</span><span class="st">"sf7"</span><span class="op">)</span> <span class="co"># opérations de géométrie sphérique</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="les-types-géométriques" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="les-types-géométriques">Les types géométriques</h2>
+</section><section id="les-types-géométriques" class="level3 page-columns page-full"><h3 class="anchored" data-anchor-id="les-types-géométriques">Les types géométriques</h3>
+<p>Parmi les 18 types géométriques que gère le package <code>sf</code> nous allons nous focaliser sur les plus communément utilisés :</p>
+<ul>
+<li>
+<code>POINT</code> et <code>MULTIPOINT</code>,</li>
+<li>
+<code>LINESTRING</code> et <code>MULTILINESTRING</code>,</li>
+<li>
+<code>POLYGON</code> et <code>MULTIPOLYGON</code>,</li>
+<li><code>GEOMETRYCOLLECTION</code></li>
+</ul>
+<p>Les encodages standards utilisés pour enregistrer ces sfg<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> sont :</p>
+<ul>
+<li>WKB (well-known binary), constitué de chaînes hexadécimales</li>
+<li>WKT (well-known text)</li>
+</ul>
+<p>SIG<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> (ou GIS en anglais) et les bases de données spatiales utilisent l’encodage WKB pour transférer et stocker les objets géométriques. <br></p>
 <div class="cell">
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">world_asia</span> <span class="op">&lt;-</span> <span class="va">world</span><span class="op">[</span><span class="va">world</span><span class="op">$</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Asia"</span>, <span class="op">]</span></span>
 <span><span class="va">asia</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_combine.html">st_union</a></span><span class="op">(</span><span class="va">world_asia</span><span class="op">)</span></span>
@@ -374,11 +398,13 @@ Note
 </div>
 
 
-</section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
+</section></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
 <ol>
 <li id="fn1"><p>simple feature<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>simple feature column<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>simple feature geometry<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>simple feature geometries<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>système d’information géographique<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
