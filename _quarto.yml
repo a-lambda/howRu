@@ -34,7 +34,8 @@ bibliography: references.bib
 
 format:
   html:
-    cover-image: images/H1_hasard_maths_Alain.jpg
+    cover-image: https://www.palais-decouverte.fr/fileadmin/fileadmin_Palais/fichiersContribs/au-programme/lasciencestla/H1_hasard_maths_Alain.jpg
+    #images/H1_hasard_maths_Alain.jpg
     theme: 
       light: 
         - cosmo
