@@ -28,6 +28,7 @@ book:
       chapters: 
         - structure/99_errements.qmd
     - summary.qmd
+    - links.qmd
     - references.qmd
 
 bibliography: references.bib

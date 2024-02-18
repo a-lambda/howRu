@@ -1,0 +1,355 @@
+---
+title: "links"
+format: html
+editor: visual
+---
+
+## Liens Internet
+
+#### *0 - Bibliographie R*
+
+-   [R Markdown books](https://bookdown.org/)
+
+#### *1 - Learn in the Cloud*
+
+-   [Cogniterra (bioinformatics with Python)](https://cogniterra.org/learn "Coursera Bioinformatics for Beginners")
+
+-   [Rosalind (bioinformatics with Python)](https://rosalind.info/problems/locations/ "Bioinformatics with Python")
+
+-   [HackerRank (SQL, Python, ...)](https://www.hackerrank.com/dashboard "Development skills")
+
+-   [LeetCode (SQL, Python, ...)](https://leetcode.com/studyplan/ "Development skills")
+
+-   [execute program (SQL, Python, ...)](https://www.executeprogram.com/ "Development skills")
+
+[PythonAnywhere](https://www.pythonanywhere.com/user/alcor/)
+
+[PostgreSQL for Everybody](https://www.pg4e.com/)
+
+[PostgreSQL Exercises](https://pgexercises.com/)
+
+[Posit Cloud](https://posit.cloud/spaces/396452/content/all?sort=name_asc)
+
+[Posit Videos](https://posit.co/resources/videos/)
+
+[CRYPTOHACK](https://cryptohack.org/)
+
+#### *Artificial Intelligence*
+
+-   [rTutor.ai (AI pour R et Python)](https://rtutor.ai/ "AI pour R et Python")
+
+-   [Chatlize.ai (AI pour R et Python)](https://chatlize.ai/ "AI pour R et Python")
+
+-   [ChatGPT](https://chat.openai.com/ "Chat GPT")
+
+#### DATA Science
+
+-   [1 - Introduction to Data Science (Rafael A Irizarry)](http://rafalab.dfci.harvard.edu/dsbook-part-1/)
+
+-   [2 - Advanced Data Science (Rafael A Irizarry)](http://rafalab.dfci.harvard.edu/dsbook-part-2/)
+
+-   [Telling Stories with Data](https://tellingstorieswithdata.com/)
+
+-   [QUANTIFYING HEALTH](https://quantifyinghealth.com/)
+
+-   [R for Data Science (2nd edition)](https://r4ds.hadley.nz/)
+
+-   [R for Data Science (1st edition)](https://r4ds.had.co.nz/)
+
+-   [R for Data Science Exercice solutions (1st edition)](https://jrnold.github.io/r4ds-exercise-solutions/)
+
+-   [Pratiquer R sur le portail SNDS](https://documentation-snds.health-data-hub.fr/files/drees/tuto_r_portail_snds.nb)
+
+-   [How to make wonderful-looking tables (library gt)](https://gt.rstudio.com/index.html)
+
+-   [Population Health Data Science with R](https://bookdown.org/taragonmd/phds/)
+
+#### Epidémiologie
+
+-   [R pour l'épidémiologie appliquée et la santé publique](https://epirhandbook.com/fr/index.html)
+
+#### *DATA Visualisation*
+
+-   [Yet Again: R + Data Science](https://yards.albert-rapp.de/)
+
+-   [Formations R aux MTES & MCTRCT](https://mtes-mct.github.io/parcours-r/)
+
+-   [From Data to Viz](https://www.data-to-viz.com/)
+
+-   [Maps from Milos](https://milospopovic.net/)
+
+-   [rspatialdata is a collection of data sources and tutorials on visualising spatial data using R](https://rspatialdata.github.io/index.html)
+
+-   [Spatial Statistics for Data Science (Paulamoraga)](https://www.paulamoraga.com/book-spatial/index.html)
+
+-   [Geocomputation with R (1st edition)](https://bookdown.org/robinlovelace/geocompr/)
+
+-   [Geocomputation with R (second edition)](https://r.geocompx.org/index.html)
+
+-   [Map Projection Explorer](https://www.geo-projections.com/)
+
+-   [Spatial Data Science with R (blog and articles)](https://r-spatial.org/)
+
+-   [Spatial Data Science With Applications in R](https://r-spatial.org/book/)
+
+-   [Spatial Data Science with R and "terra"](https://rspatial.org/)
+
+-   [Les données spatiales avec R (15/01/2021)](https://maeltheuliere.github.io/rspatial/index.html)
+
+-   [Making Maps with R (31/07/2020)](https://bookdown.org/nicohahn/making_maps_with_r5/docs/introduction.html)
+
+-   [Cartographie et SIG avec R (ThinkR)](https://thinkr.fr/formation-au-logiciel-r/cartographie-et-sig-avec-r/)
+
+-   [Compute geometric measurements (package sf)](https://r-spatial.github.io/sf/reference/geos_measures.html)
+
+-   [Simple Features for R](https://r-spatial.github.io/sf/articles/sf1.html#benchmarks)
+
+-   [postgis - Data Management](http://postgis.net/docs/using_postgis_dbmanagement.html#Triangle)
+
+-   [Data Visualization](https://socviz.co/)
+
+-   [Fundamentals of Data Visualization](https://clauswilke.com/dataviz/)
+
+-   [Cartographie interactive avec leaflet (ThinkR)](https://thinkr.fr/cartographie-interactive-comment-visualiser-mes-donnees-spatiales-de-maniere-dynamique-avec-leaflet/)
+
+#### ggplot2
+
+-   [ggplot2: Elegant Graphics for Data Analysis (3rd edition)](https://ggplot2-book.org/)
+
+-   [Solutions to ggplot2: Elegant Graphics for Data Analysis (3rd edition)](https://ggplot2-book-solutions-3ed.netlify.app/index.html)
+
+-   [ggplot2 Aesthetic specifications](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html)
+
+-   [ggplot2 Function reference](https://ggplot2.tidyverse.org/reference/)
+
+-   [127 registered extensions available to explore](https://exts.ggplot2.tidyverse.org/gallery/)
+
+-   [Tutorial on how to make beautiful plots with R](https://www.mit.edu/~amidi/teaching/data-science-tools/tutorial/data-visualization-with-r/)
+
+-   [The R Graph Galley](https://r-graph-gallery.com/index.html)
+
+-   [Data Visualization with R](https://cengel.github.io/R-data-viz/)
+
+-   [Be Awesome in ggplot2: A Practical Guide to be Highly Effective - R software and data visualization](http://www.sthda.com/english/wiki/be-awesome-in-ggplot2-a-practical-guide-to-be-highly-effective-r-software-and-data-visualization)
+
+-   [ggplot2 tidyverse](https://ggplot2.tidyverse.org/index.html)
+
+-   [Easy way to mix multiple graphs on the same page](http://www.sthda.com/english/wiki/wiki.php?id_contents=7930)
+
+-   [Aligning plots (library cowplot)](https://wilkelab.org/cowplot/articles/aligning_plots.html)
+
+-   [Laying out multiple plots on a page](https://cran.r-project.org/web/packages/egg/vignettes/Ecosystem.html)
+
+-   [Facets (library ggh4x)](https://cran.r-project.org/web/packages/ggh4x/vignettes/Facets.html)
+
+-   [ggrepel examples](https://ggrepel.slowkow.com/articles/examples.html)
+
+-   [132 registered extensions available to explore](https://exts.ggplot2.tidyverse.org/gallery/)
+
+-   [rasterVis](https://oscarperpinan.github.io/rastervis/#intro)
+
+#### *Séries temporelles*
+
+-   [Séries temporelles avec Python (1/4) (STATOSCOP)](https://blog.statoscop.fr/timeseries-1.html)
+
+-   [Séries temporelles avec Python (2/4) (STATOSCOP)](https://blog.statoscop.fr/timeseries-2.html)
+
+-   [Séries temporelles avec Python (3/4) (STATOSCOP)](https://blog.statoscop.fr/timeseries-3.html)
+
+-   [Séries temporelles avec Python (4/4) (STATOSCOP)](https://blog.statoscop.fr/timeseries-4.html)
+
+-   [Forecasting: Principles and Practice (3rd ed)](https://otexts.com/fpp3/)
+
+-   J'en suis à la leçon 2.9 White noise
+
+-   [Analyse de séries temporelles avec R](https://ourednik.info/maps/2023/05/21/analysestemporellesavecr/)
+
+-   [Séries temporelles sous R](https://simonbussy.com/teaching/time-series/time_series_R.pdf)
+
+-   [Introduction à la manipulation de série temporelle avec R](https://www.imo.universite-paris-saclay.fr/~yannig.goude/Materials/time_series/cours1_R_serie_temp.pdf)
+
+-   [Time Series Analysis (06/11/2021)](https://bookdown.org/mpfoley1973/time-series/)
+
+-   [Seasonal plot (library feasts)](https://feasts.tidyverts.org/reference/gg_season.html)
+
+#### Network
+
+[Static and dynamic network visualization with R](https://www.kateto.net/polnet2015.html)
+
+#### Shiny
+
+-   [Mastering shiny (1st edition)](https://mastering-shiny.org/)
+
+-   [Mastering shiny solutions (1st edition)](https://mastering-shiny-solutions.netlify.app/)
+
+-   [Mastering shiny solutions (1st edition) other version](https://mastering-shiny-solutions.org/)
+
+-   [Aide-mémoire Shiny (ThinkR)](https://thinkr.fr/aide-memoire-shiny/)
+
+-   [Shiny Gallery](https://shiny.posit.co/r/gallery/)
+
+-   [Shiny for Python](https://shiny.posit.co/py/docs/overview.html)
+
+-   [Engineering Production-Grade Shiny Apps (golem)](https://engineering-shiny.org/index.html)
+
+### Quarto
+
+-   [CHRISTIAN GEBHARD Datavisualization Design](https://jollydata.blog/)
+
+-   [Creating websites with Quarto and Github](https://youtu.be/e9qCS8ODs4o?list=PLkrJrLs7xfbXcEKhTCKRSr2VXH4yiBeXo)
+
+-   [Building all the data things with R and web technologies](https://www.youtube.com/@rappa753/videos)
+
+-   [ggplot2 workshop (Thomas Lin Pedersen)](https://youtu.be/h29g21z0a68)
+
+-   [Free themes for Bootstrap](https://bootswatch.com/)
+
+-   [HTML Colors](https://htmlcolorcodes.com)
+
+-   [Google Fonts](https://fonts.google.com/)
+
+-   [Creating your personal website using Quarto](https://ucsb-meds.github.io/creating-quarto-websites/)
+
+### R and QUARTO COMMUNITY
+
+[R-bloggers](https://www.r-bloggers.com/)
+
+[Posit Community](https://community.rstudio.com/)
+
+#### Development
+
+1.  GIT
+
+    [Learning Git Branching](https://learngitbranching.js.org/)
+
+    [Happy Git and GitHub for the useR](https://happygitwithr.com/)
+
+    [Et merde, Git!?!](https://ohshitgit.com/fr)
+
+2.  GITHUB
+
+    [Github Actions for R](https://www.jimhester.com/talk/2020-rsc-github-actions/)
+
+    [How To Use GitHub Action Secrets In Your Python Script In 3 Steps](https://youtu.be/H--8n9ZxxCI)
+
+    [GitHub Secrets from Python and R](https://canovasjm.netlify.app/2021/01/12/github-secrets-from-python-and-r/)
+
+    [How to Use GitHub to Update a Database Automatically](https://youtu.be/lv-GMjWuTsI)
+
+    [How to Use GitHub Actions with R to Run Code Automatically](https://rfortherestofus.com/2023/05/github-actions)
+
+    [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions)
+
+    [A weekly data project in R from the R4DS online learning community](https://github.com/rfordatascience/tidytuesday)
+
+3.  UNIX
+
+    [Data Science at the Command Line](https://jeroenjanssens.com/dsatcl/)
+
+4.  R
+
+-   [Mastering Software Development in R](https://bookdown.org/rdpeng/RProgDA/ "Roger Peng (20/12/2020)")
+
+-   [R Internals](https://cran.r-project.org/doc/manuals/r-release/R-ints.html)
+
+-   [Advanced R 2e](https://adv-r.hadley.nz/index.html)
+
+-   [Advanced R Solutions (2nd edition)](https://advanced-r-solutions.rbind.io/index.html)
+
+-   [Advanced R 1st](http://adv-r.had.co.nz/)
+
+-   [Advanced R Solutions (1st edition)](https://advanced-r-solutions-ed1.netlify.app/)
+
+-   [R Packages (2nd edition)](https://r-pkgs.org/)
+
+-   [Writing R Extensions](https://cran.r-project.org/doc/manuals/r-release/R-exts.html)
+
+-   [Outils de développement et de performance (Création de packages)](https://r-dev-perf.borishejblum.science/)
+
+-   [How to write your own R package and publish it on CRAN](https://www.mzes.uni-mannheim.de/socialsciencedatalab/article/r-package/#section1)
+
+-   [How to develop good R packages (for open science)](https://masalmon.eu/2017/12/11/goodrpackages/)
+
+-   [R-hub](https://docs.r-hub.io/)
+
+-   [Travailler avec R](https://ericmarcon.github.io/travailleR/index.html)
+
+-   [Mastering Software Development in R](https://bookdown.org/rdpeng/RProgDA/)
+
+3.  Django
+
+-   [Generating a database-driven dropdown menu in Django](https://copyprogramming.com/howto/django-create-a-dropdown-list-from-database)
+
+#### *Bio-informatique*
+
+-   [Master bioinformatique Rennes](http://bioinfo-rennes.fr/)
+
+-   [SFBI (société française de bioinformatique)](https:/www.sfbi.fr)
+
+-   [IFB (Institut français de bioinformatique)](https:/www.france-bioinformatique.fr)
+
+-   [Phylogénie moléculaire - formation avancée](https://cnrsformation.cnrs.fr/phylogenie-moleculaire-formation-avancee?axe=146)
+
+## OPEN DATA
+
+1.  [Enedis Open Data](https://data.enedis.fr/pages/accueil/)
+2.  [data.gouv](https://www.data.gouv.fr/fr/)
+3.  [opendatasoft](https://public.opendatasoft.com/explore/?sort=modified)
+
+## DONNEES CLIMATIQUES
+
+1.  [climate.gov (climat)](https://www.climate.gov/maps-data/all)
+2.  [NOAA Data](https://www.ncei.noaa.gov/access)
+3.  [Copernicus Climate reanalysis](https://climate.copernicus.eu/climate-reanalysis)
+4.  [Carbon bombs under the spotlight](https://www.carbonbombs.org/)
+5.  [Climate Lab Book](https://www.climate-lab-book.ac.uk/2016/mapping-global-temperature-change/)
+
+## A classer
+
+#### 1) R
+
+-   [R Guide des bonnes pratiques](https://www.pratiques.utilitr.org/index.html)
+
+-   [Code Snippets in the RStudio IDE](https://support.posit.co/hc/en-us/articles/204463668-Code-Snippets)
+
+-   [R Markdown -- Les petits trucs qui changent la vie](https://thinkr.fr/r-markdown-les-petits-trucs-qui-changent-la-vie/)
+
+-   [Travail collaboratif avec R](https://linogaliana.gitlab.io/collaboratif/)
+
+-   [What They Forgot to Teach You About R](https://rstats.wtf/index.html)
+
+-   [R for Graduate Students](https://bookdown.org/yih_huynh/Guide-to-R-Book/)
+
+-   [Opération sur les fichiers et les dossiers](https://thinkr.fr/operations-sur-les-fichiers-et-les-dossiers-sous-r/)
+
+-   [R Programming for Research](https://geanders.github.io/RProgrammingForResearch/index.html)
+
+-   [How to delete rows in R](https://sparkbyexamples.com/r-programming/drop-dataframe-rows-in-r/#:~:text=Note%20that%20R%20doesn't,the%20first%20and%20third%20row.)
+
+-   [import Excel in R](https://sparkbyexamples.com/r-programming/import-excel-in-r-with-examples/)
+
+#### 2) tidyverse
+
+[Differences between the base R and magrittr pipes](https://www.tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/)
+
+[The tidyverse style guide](https://style.tidyverse.org/pipes.html)
+
+#### benchmarking
+
+-   [Profvis --- Interactive Visualizations for Profiling R Code](http://rstudio.github.io/profvis/index.html)
+
+### Color
+
+-   
+
+#### Django
+
+-   [Site biblio alchiba (pythonanywhere.com)](http://biblio.alchiba.fr/admin/)
+
+#### Gestion de l'eau
+
+-   [SIDEN SIAN (Tome 1) - Cour des comptes](https://www.ccomptes.fr/fr/publications/siden-sian-nord-tome-1-enquete-nationale-sur-la-gestion-quantitative-de-leau-en)
+
+-   [Les per et polyfluoroalkylées (PFAS) ARS Auvergne-Rhône-Alpes](https://www.auvergne-rhone-alpes.ars.sante.fr/les-et-polyfluoroalkylees-pfas)
+
+-   [PFAS Contamination in the U.S.](https://www.ewg.org/interactive-maps/pfas_contamination/map/)
