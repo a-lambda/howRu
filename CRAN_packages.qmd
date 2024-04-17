@@ -1,0 +1,53 @@
+# Dépendances des packages R CRAN
+
+## Chargement des librairies
+
+```{r}
+#| label: load_libraries
+#| message: false
+
+library(cranly)
+```
+
+## Récupérer les données du CRAN
+
+L'outil de référence pour collecter les informations à jour des paquets est la commande `CRAN_package_db()`du package `tools`
+
+```{r}
+#| label: packages_list
+
+package_db_file <- "data/package_db.RDS"
+if (file.exists(package_db_file)) {
+  package_db <- readRDS(package_db_file)
+} else {
+  package_db <- tools::CRAN_package_db()
+  saveRDS(package_db, file = package_db_file)
+}
+
+head(package_db[,1:4])
+nrow(package_db)
+```
+
+## Construction d'un arbre des dépendances avec `cranly`^[[R package dependence trees](https://cran.r-project.org/web/packages/cranly/vignettes/dependence_trees.html)]
+
+```{r}
+#| label: cranly_tree
+
+library(cranly)
+
+if (file.exists(package_db_file)) {
+  package_db <- readRDS(package_db_file)
+  cran_db <- clean_CRAN_db(package_db)
+} else {
+  cran_db <- clean_CRAN_db()
+}
+
+package_network <- build_network(cran_db)
+
+compute_dependence_tree(package_network, "tibble")
+
+tibble_tree <- build_dependence_tree(package_network, "tibble")
+plot(tibble_tree)
+
+
+```

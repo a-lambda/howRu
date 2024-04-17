@@ -4,83 +4,232 @@
     "href": "index.html",
     "title": "Dans quel étage R ?",
     "section": "",
-    "text": "Préface\nCe livre est réalisé à partir de Quarto, système open-source de publication scientifique et technique.  C’est aussi le lieu où je rendrai compte de fonctionnalités offertes par Github, service web d’hébergement de de gestion de développement de logiciels, notamment :\n\nLes Github Pages permettant d’héberger cet ouvrage\nLes Github Actions, fonctionnalités avancées offertes par la plateforme Github"
+    "text": "Préface\nCe livre est réalisé à partir de Quarto, système open-source de publication scientifique et technique.  C’est aussi le lieu où je rendrai compte de fonctionnalités offertes par Github, service web d’hébergement de de gestion de développement de logiciels, notamment :\n\nLes Github Pages permettant d’héberger cet ouvrage\nLes Github Actions, fonctionnalités avancées offertes par la plateforme Github",
+    "crumbs": [
+      "Préface"
+    ]
   },
   {
     "objectID": "intro.html",
     "href": "intro.html",
     "title": "Introduction",
     "section": "",
-    "text": "Je vais tenter de regrouper dans les pages qui vont suivre l’ensemble des informations que je juge pertinente concernant le domaine des statistiques associées aux données temporelles et géospatiales. \nJe le fais en français parce je juge que des lacunes sont flagrantes concernant les ouvrages de ce type utilisant cette langue. \nPetit bémol sur cette dernière remarque. Il serait en effet dangereux, dans le cadre d’un apprentissage, de vouloir traduire l’intégralité des termes techniques, d’origine anglaise pour la majorité. Ce serait même contre-productif, car cette nomenclature métier répond d’abord à des normes internationales. \nDernière remarque, cet ouvrage se constituera de manière cahotique et ne pourra jamais faire figure, dans un premier temps, de texte de référence. Il s’agit de prime abord plutôt d’un essai qui deviendra, au cours des mois qui vont suivre, utile et légitime, ou pas du tout. \nDonc aucune prétention à venir …"
+    "text": "Je vais tenter de regrouper dans les pages qui vont suivre l’ensemble des informations que je juge pertinente concernant le domaine des statistiques associées aux données temporelles et géospatiales. \nJe le fais en français parce je juge que des lacunes sont flagrantes concernant les ouvrages de ce type utilisant cette langue. \nPetit bémol sur cette dernière remarque. Il serait en effet dangereux, dans le cadre d’un apprentissage, de vouloir traduire l’intégralité des termes techniques, d’origine anglaise pour la majorité. Ce serait même contre-productif, car cette nomenclature métier répond d’abord à des normes internationales. \nDernière remarque, cet ouvrage se constituera de manière cahotique et ne pourra jamais faire figure, dans un premier temps, de texte de référence. Il s’agit de prime abord plutôt d’un essai qui deviendra, au cours des mois qui vont suivre, utile et légitime, ou pas du tout. \nDonc aucune prétention à venir …",
+    "crumbs": [
+      "Introduction"
+    ]
   },
   {
     "objectID": "prerequis.html",
     "href": "prerequis.html",
     "title": "Prérequis",
     "section": "",
-    "text": "Des prérequis logiciels sont nécessaires pour explorer les domaines identifiés dans ce chapitre :\n\nune version récente de R (R 4.3.2 ou une version plus récente).\n\nIl est recommandé d’expérimenter par soi-même les sujets abordés plus bas pour renforcer ses compétences géo-computationnelles.\nDans ce cadre, il est recommandé d’installer un envrironnement de développement (IDE) tel que RStudio ou VS Code pour écrire/exécuter/tester le code R.\nNous recommandons également l’usage des projets Rstudio, ou les espaces de travail VS Code ou tout autre système équivalent pour gérer vos projets de manière normalisée."
+    "text": "Des prérequis logiciels sont nécessaires pour explorer les domaines identifiés dans ce chapitre :\n\nune version récente de R (R 4.3.2 ou une version plus récente).\n\nIl est recommandé d’expérimenter par soi-même les sujets abordés plus bas pour renforcer ses compétences géo-computationnelles.\nDans ce cadre, il est recommandé d’installer un envrironnement de développement (IDE) tel que RStudio ou VS Code pour écrire/exécuter/tester le code R.\nNous recommandons également l’usage des projets Rstudio, ou les espaces de travail VS Code ou tout autre système équivalent pour gérer vos projets de manière normalisée.",
+    "crumbs": [
+      "Prérequis"
+    ]
   },
   {
     "objectID": "structure/01_sf.html#un-exemple-pour-illustrer",
     "href": "structure/01_sf.html#un-exemple-pour-illustrer",
     "title": "\n1  Entrée en matière\n",
-    "section": "\n1.1 Un exemple pour illustrer",
-    "text": "1.1 Un exemple pour illustrer\nNous allons nous intéresser au jeu de données world présent dans le package spData\n\nclass(world)\n\n[1] \"sf\"         \"tbl_df\"     \"tbl\"        \"data.frame\"\n\ndim(world)\n\n[1] 177  11\n\nnames(world)\n\n [1] \"iso_a2\"    \"name_long\" \"continent\" \"region_un\" \"subregion\" \"type\"     \n [7] \"area_km2\"  \"pop\"       \"lifeExp\"   \"gdpPercap\" \"geom\"     \n\n\nIl s’agit bien d’un objet de type dataframe composé de 177 pays et 11 colonnes. Mais c’est aussi un objet de classe sf1 \nSélectionnons un sous-ensemble de world que nous appellerons world_mini\n\nworld_mini &lt;- world[1:2, 1:3]\nworld_mini\n\nSimple feature collection with 2 features and 3 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -180 ymin: -18.28799 xmax: 180 ymax: -0.95\nGeodetic CRS:  WGS 84\n# A tibble: 2 × 4\n  iso_a2 name_long continent                                                geom\n  &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;                                      &lt;MULTIPOLYGON [°]&gt;\n1 FJ     Fiji      Oceania   (((-180 -16.55522, -179.9174 -16.50178, -179.7933 …\n2 TZ     Tanzania  Africa    (((33.90371 -0.95, 31.86617 -1.02736, 30.76986 -1.…\n\n\nComparé à un dataframe standard, un objet de type sf inclut des méta-données géographiques additionnelles :\n\nGeometry type\nDimension\nBounding box\n\nGeodetic CRS, information lié au sytème de coordonnées de référence\n\nainsi que la présence d’une colonne geom (nommé parfois aussi geometry) comportant des éléments géométriques.\nCette colonne particulière est une colonne de classe sfc2. \nA leurs tours les objets de type sfc sont composés d’un ou plusieurs objets de type sfg3."
+    "section": "",
+    "text": "Geometry type\nDimension\nBounding box\n\nGeodetic CRS, information lié au sytème de coordonnées de référence",
+    "crumbs": [
+      "Premier contact",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Entrée en matière</span>"
+    ]
   },
   {
     "objectID": "structure/01_sf.html#une-introduction-aux-simple-features",
     "href": "structure/01_sf.html#une-introduction-aux-simple-features",
     "title": "\n1  Entrée en matière\n",
     "section": "\n1.2 Une introduction aux “simple features”",
-    "text": "1.2 Une introduction aux “simple features”\nLes “simple features” (que l’on pourrait traduire par “fonctionnalités de base”) font partie d’une norme ouverte homologuée par l’Open Geospatial Consortium (OGC). \nC’est un modèle hiérarchique de données qui regroupe 18 types géométriques. Seulement 7 sont utilisés dans la grande majorité des recherches géographiques ; ces types géométriques de base sont intégralement implémentés par le package sf de R.\nIl est possible de retrouver l’ensemble des 18 types géométriques dans le manuel PostGIS.\nLe package sf\nLe paquet sf fournit les classes des vecteurs géographiques et une interface en ligne de commande permettant l’accès aux fonctionnalités de géo-computation offertes par les librairies de bas-niveau suivantes :\n\nGDAL, pour lire, écrire et manipuler un nombre important de formats de données géographiques,\nPROJ, une puissante librairie pour la transformations de systèmes de coordonnées,\nGEOS, un moteur de géométrie planaire destinés aux calculs de tampons (buffers) par exemple, aussi bien que des centroïdes pour des données projetées suivant un CRS (Coordinate Reference Systems) donné,\nS2, un moteur de géométrie sphérique écrit en C++ et développé par Google, via le package s2.\n\n\nlibrary(sf)\n\nLe message visible au chargement du package sf décline explicitement les liens avec ces librairies et montre aussi l’activation par défaut des fonctionnalités du paquet s2.\nLes fonctionnalités offertes par le package sf sont correctement documentées au travers de 7 vignettes visibles hors connexion comme suit :\n\nvignette(package = \"sf\") # pour voir quels vignettes sont disponibles\nvignette(\"sf1\") # une introduction au package\nvignette(\"sf2\") # lire, écrire, et convertir les \"simple features\"\nvignette(\"sf3\") # manipuler les géométries des \"simple features\"\nvignette(\"sf4\") # manipuler le \"simple features\"\nvignette(\"sf5\") # afficher les \"simple features\"\nvignette(\"sf6\") # points divers de la documentation\nvignette(\"sf7\") # opérations de géométrie sphérique\n\nLes types géométriques\nParmi les 18 types géométriques que gère le package sf nous allons nous focaliser sur les plus communément utilisés :\n\n\nPOINT et MULTIPOINT,\n\nLINESTRING et MULTILINESTRING,\n\nPOLYGON et MULTIPOLYGON,\nGEOMETRYCOLLECTION\n\nLes encodages standards utilisés pour enregistrer ces sfg4 sont :\n\nWKB (well-known binary), constitué de chaînes hexadécimales\nWKT (well-known text)\n\nSIG5 (ou GIS en anglais) et les bases de données spatiales utilisent l’encodage WKB pour transférer et stocker les objets géométriques. \n\nworld_asia &lt;- world[world$continent == \"Asia\", ]\nasia &lt;- st_union(world_asia)\nbbox &lt;- st_bbox(world)\n\nasia\n\nGeometry set for 1 feature \nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: 26.04335 ymin: -10.35999 xmax: 145.5431 ymax: 55.38525\nGeodetic CRS:  WGS 84\n\n\nMULTIPOLYGON (((36.14976 35.82153, 35.90502 35....\n\nworld\n\nSimple feature collection with 177 features and 10 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -180 ymin: -89.9 xmax: 180 ymax: 83.64513\nGeodetic CRS:  WGS 84\n# A tibble: 177 × 11\n   iso_a2 name_long continent region_un subregion type  area_km2     pop lifeExp\n * &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;\n 1 FJ     Fiji      Oceania   Oceania   Melanesia Sove…   1.93e4  8.86e5    70.0\n 2 TZ     Tanzania  Africa    Africa    Eastern … Sove…   9.33e5  5.22e7    64.2\n 3 EH     Western … Africa    Africa    Northern… Inde…   9.63e4 NA         NA  \n 4 CA     Canada    North Am… Americas  Northern… Sove…   1.00e7  3.55e7    82.0\n 5 US     United S… North Am… Americas  Northern… Coun…   9.51e6  3.19e8    78.8\n 6 KZ     Kazakhst… Asia      Asia      Central … Sove…   2.73e6  1.73e7    71.6\n 7 UZ     Uzbekist… Asia      Asia      Central … Sove…   4.61e5  3.08e7    71.0\n 8 PG     Papua Ne… Oceania   Oceania   Melanesia Sove…   4.65e5  7.76e6    65.2\n 9 ID     Indonesia Asia      Asia      South-Ea… Sove…   1.82e6  2.55e8    68.9\n10 AR     Argentina South Am… Americas  South Am… Sove…   2.78e6  4.30e7    76.3\n# ℹ 167 more rows\n# ℹ 2 more variables: gdpPercap &lt;dbl&gt;, geom &lt;MULTIPOLYGON [°]&gt;\n\n\n\nplot(\n  asia, \n  xlim = c(bbox[\"xmin\"], bbox[\"xmax\"]), \n  ylim = c(bbox[\"ymin\"],bbox[\"ymax\"]),\n  col = \"red\",\n  graticule = TRUE,\n  axes = TRUE,\n  main = \"Les pays d'Asie\"\n)\n\nplot(\n  st_geometry(world), \n  add = TRUE\n)\n\n\n\nL’ Asie dans le Monde. La zone asiatique colorée en rouge a été affichée avec les limites de cadre (bounding box) de la carte du Monde. L’ensemble des pays du Monde avec leurs frontières respectives ont été ensuite affichés au-dessus de la zone déjà tracée.\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nLes mots sont ici malaisés à formuler pour des éléments graphiques simples (bounding box) c’est ce qui fait ici la difficulté de la transmission correcte des informations pour une personne novice dans le domaine."
+    "text": "1.2 Une introduction aux “simple features”\nLes “simple features” (que l’on pourrait traduire par “fonctionnalités de base”) font partie d’une norme ouverte homologuée par l’Open Geospatial Consortium (OGC). \nC’est un modèle hiérarchique de données qui regroupe 18 types géométriques. Seulement 7 sont utilisés dans la grande majorité des recherches géographiques ; ces types géométriques de base sont intégralement implémentés par le package sf de R.\nIl est possible de retrouver l’ensemble des 18 types géométriques dans le manuel PostGIS.\nLe package sf\nLe paquet sf fournit les classes des vecteurs géographiques et une interface en ligne de commande permettant l’accès aux fonctionnalités de géo-computation offertes par les librairies de bas-niveau suivantes :\n\nGDAL, pour lire, écrire et manipuler un nombre important de formats de données géographiques,\nPROJ, une puissante librairie pour la transformations de systèmes de coordonnées,\nGEOS, un moteur de géométrie planaire destinés aux calculs de tampons (buffers) par exemple, aussi bien que des centroïdes pour des données projetées suivant un CRS (Coordinate Reference Systems) donné,\nS2, un moteur de géométrie sphérique écrit en C++ et développé par Google, via le package s2.\n\n\nlibrary(sf)\n\nLe message visible au chargement du package sf décline explicitement les liens avec ces librairies et montre aussi l’activation par défaut des fonctionnalités du paquet s2.\nLes fonctionnalités offertes par le package sf sont correctement documentées au travers de 7 vignettes visibles hors connexion comme suit :\n\nvignette(package = \"sf\") # pour voir quels vignettes sont disponibles\nvignette(\"sf1\") # une introduction au package\nvignette(\"sf2\") # lire, écrire, et convertir les \"simple features\"\nvignette(\"sf3\") # manipuler les géométries des \"simple features\"\nvignette(\"sf4\") # manipuler le \"simple features\"\nvignette(\"sf5\") # afficher les \"simple features\"\nvignette(\"sf6\") # points divers de la documentation\nvignette(\"sf7\") # opérations de géométrie sphérique\n\nLes types géométriques\nParmi les 18 types géométriques que gère le package sf nous allons nous focaliser sur les plus communément utilisés :\n\n\nPOINT et MULTIPOINT,\n\nLINESTRING et MULTILINESTRING,\n\nPOLYGON et MULTIPOLYGON,\nGEOMETRYCOLLECTION\n\nLes encodages standards utilisés pour enregistrer ces sfg4 sont :\n\nWKB (well-known binary), constitué de chaînes hexadécimales\nWKT (well-known text)\n\nSIG5 (ou GIS en anglais) et les bases de données spatiales utilisent l’encodage WKB pour transférer et stocker les objets géométriques. \n\nworld_asia &lt;- world[world$continent == \"Asia\", ]\nasia &lt;- st_union(world_asia)\nbbox &lt;- st_bbox(world)\n\nasia\n\nGeometry set for 1 feature \nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: 26.04335 ymin: -10.35999 xmax: 145.5431 ymax: 55.38525\nGeodetic CRS:  WGS 84\n\n\nMULTIPOLYGON (((36.14976 35.82153, 35.90502 35....\n\nworld\n\nSimple feature collection with 177 features and 10 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -180 ymin: -89.9 xmax: 180 ymax: 83.64513\nGeodetic CRS:  WGS 84\n# A tibble: 177 × 11\n   iso_a2 name_long continent region_un subregion type  area_km2     pop lifeExp\n * &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;\n 1 FJ     Fiji      Oceania   Oceania   Melanesia Sove…   1.93e4  8.86e5    70.0\n 2 TZ     Tanzania  Africa    Africa    Eastern … Sove…   9.33e5  5.22e7    64.2\n 3 EH     Western … Africa    Africa    Northern… Inde…   9.63e4 NA         NA  \n 4 CA     Canada    North Am… Americas  Northern… Sove…   1.00e7  3.55e7    82.0\n 5 US     United S… North Am… Americas  Northern… Coun…   9.51e6  3.19e8    78.8\n 6 KZ     Kazakhst… Asia      Asia      Central … Sove…   2.73e6  1.73e7    71.6\n 7 UZ     Uzbekist… Asia      Asia      Central … Sove…   4.61e5  3.08e7    71.0\n 8 PG     Papua Ne… Oceania   Oceania   Melanesia Sove…   4.65e5  7.76e6    65.2\n 9 ID     Indonesia Asia      Asia      South-Ea… Sove…   1.82e6  2.55e8    68.9\n10 AR     Argentina South Am… Americas  South Am… Sove…   2.78e6  4.30e7    76.3\n# ℹ 167 more rows\n# ℹ 2 more variables: gdpPercap &lt;dbl&gt;, geom &lt;MULTIPOLYGON [°]&gt;\n\n\n\nplot(\n  asia, \n  xlim = c(bbox[\"xmin\"], bbox[\"xmax\"]), \n  ylim = c(bbox[\"ymin\"],bbox[\"ymax\"]),\n  col = \"red\",\n  graticule = TRUE,\n  axes = TRUE,\n  main = \"Les pays d'Asie\"\n)\n\nplot(\n  st_geometry(world), \n  add = TRUE\n)\n\n\n\nL’ Asie dans le Monde. La zone asiatique colorée en rouge a été affichée avec les limites de cadre (bounding box) de la carte du Monde. L’ensemble des pays du Monde avec leurs frontières respectives ont été ensuite affichés au-dessus de la zone déjà tracée.\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nLes mots sont ici malaisés à formuler pour des éléments graphiques simples (bounding box) c’est ce qui fait ici la difficulté de la transmission correcte des informations pour une personne novice dans le domaine.",
+    "crumbs": [
+      "Premier contact",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Entrée en matière</span>"
+    ]
   },
   {
     "objectID": "structure/01_sf.html#footnotes",
     "href": "structure/01_sf.html#footnotes",
     "title": "\n1  Entrée en matière\n",
     "section": "",
-    "text": "simple feature↩︎\nsimple feature column↩︎\nsimple feature geometry↩︎\nsimple feature geometries↩︎\nsystème d’information géographique↩︎"
+    "text": "simple feature↩︎\nsimple feature column↩︎\nsimple feature geometry↩︎\nsimple feature geometries↩︎\nsystème d’information géographique↩︎",
+    "crumbs": [
+      "Premier contact",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Entrée en matière</span>"
+    ]
   },
   {
     "objectID": "structure/99_errements.html",
     "href": "structure/99_errements.html",
-    "title": "2  Visions",
+    "title": "3  Visions",
     "section": "",
-    "text": "Re-mot-deler le monde\nA la frontière de nos mots nous voulons dicter l’univers. Mais que n’en disent sur cette Terre, tous ceux qu’on laisse pour sots ?\nUn renard affublé d’un corbeau, sortis d’une élégante fable, ne sauraient-ils être encore plus beaux, à la lumière de leur corde sensible ?\nLes êtres à nos yeux invisibles ne sont-ils point, à fleur de peau, des témoins beaucoup plus attachés, à leur terrier que l’on toise de haut ?\nCorbeau, renard, ou piètre vermisseau, pâles images réduites à ces lignes, il se trame dans vos modestes clairières bien plus que ce simple univers.\nNos lisières lexicales occultent l’inentendu et nous confondent en lettres convenues. Alors brisons, de nos rêves, toutes les valeurs, et révélons ensemble cet autre ailleurs."
+    "text": "Re-mot-deler le monde\nA la frontière de nos mots nous voulons dicter l’univers. Mais que n’en disent sur cette Terre, tous ceux qu’on laisse pour sots ?\nUn renard affublé d’un corbeau, sortis d’une élégante fable, ne sauraient-ils être encore plus beaux, à la lumière de leur corde sensible ?\nLes êtres à nos yeux invisibles ne sont-ils point, à fleur de peau, des témoins beaucoup plus attachés, à leur terrier que l’on toise de haut ?\nCorbeau, renard, ou piètre vermisseau, pâles images réduites à ces lignes, il se trame dans vos modestes clairières bien plus que ce simple univers.\nNos lisières lexicales occultent l’inentendu et nous confondent en lettres convenues. Alors brisons, de nos rêves, toutes les valeurs, et révélons ensemble cet autre ailleurs.",
+    "crumbs": [
+      "Digressions",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Visions</span>"
+    ]
   },
   {
     "objectID": "summary.html#footnotes",
     "href": "summary.html#footnotes",
-    "title": "\n3  Summary\n",
+    "title": "\n4  Summary\n",
     "section": "",
-    "text": "Ce texte est invisible ?↩︎"
+    "text": "Ce texte est invisible ?↩︎",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Summary</span>"
+    ]
   },
   {
     "objectID": "links.html#liens-internet",
     "href": "links.html#liens-internet",
-    "title": "4  links",
-    "section": "4.1 Liens Internet",
-    "text": "4.1 Liens Internet\n\n0 - Bibliographie R\n\nR Markdown books\n\n\n\n1 - Learn in the Cloud\n\nCogniterra (bioinformatics with Python)\nRosalind (bioinformatics with Python)\nHackerRank (SQL, Python, …)\nLeetCode (SQL, Python, …)\nexecute program (SQL, Python, …)\n\nPythonAnywhere\nPostgreSQL for Everybody\nPostgreSQL Exercises\nPosit Cloud\nPosit Videos\nCRYPTOHACK\n\n\nArtificial Intelligence\n\nrTutor.ai (AI pour R et Python)\nChatlize.ai (AI pour R et Python)\nChatGPT\n\n\n\nDATA Science\n\n1 - Introduction to Data Science (Rafael A Irizarry)\n2 - Advanced Data Science (Rafael A Irizarry)\nTelling Stories with Data\nQUANTIFYING HEALTH\nR for Data Science (2nd edition)\nR for Data Science (1st edition)\nR for Data Science Exercice solutions (1st edition)\nPratiquer R sur le portail SNDS\nHow to make wonderful-looking tables (library gt)\nPopulation Health Data Science with R\n\n\n\nEpidémiologie\n\nR pour l’épidémiologie appliquée et la santé publique\n\n\n\nDATA Visualisation\n\nYet Again: R + Data Science\nFormations R aux MTES & MCTRCT\nFrom Data to Viz\nMaps from Milos\nrspatialdata is a collection of data sources and tutorials on visualising spatial data using R\nSpatial Statistics for Data Science (Paulamoraga)\nGeocomputation with R (1st edition)\nGeocomputation with R (second edition)\nMap Projection Explorer\nSpatial Data Science with R (blog and articles)\nSpatial Data Science With Applications in R\nSpatial Data Science with R and “terra”\nLes données spatiales avec R (15/01/2021)\nMaking Maps with R (31/07/2020)\nCartographie et SIG avec R (ThinkR)\nCompute geometric measurements (package sf)\nSimple Features for R\npostgis - Data Management\nData Visualization\nFundamentals of Data Visualization\nCartographie interactive avec leaflet (ThinkR)\n\n\n\nggplot2\n\nggplot2: Elegant Graphics for Data Analysis (3rd edition)\nSolutions to ggplot2: Elegant Graphics for Data Analysis (3rd edition)\nggplot2 Aesthetic specifications\nggplot2 Function reference\n127 registered extensions available to explore\nTutorial on how to make beautiful plots with R\nThe R Graph Galley\nData Visualization with R\nBe Awesome in ggplot2: A Practical Guide to be Highly Effective - R software and data visualization\nggplot2 tidyverse\nEasy way to mix multiple graphs on the same page\nAligning plots (library cowplot)\nLaying out multiple plots on a page\nFacets (library ggh4x)\nggrepel examples\n132 registered extensions available to explore\nrasterVis\n\n\n\nSéries temporelles\n\nSéries temporelles avec Python (1/4) (STATOSCOP)\nSéries temporelles avec Python (2/4) (STATOSCOP)\nSéries temporelles avec Python (3/4) (STATOSCOP)\nSéries temporelles avec Python (4/4) (STATOSCOP)\nForecasting: Principles and Practice (3rd ed)\nJ’en suis à la leçon 2.9 White noise\nAnalyse de séries temporelles avec R\nSéries temporelles sous R\nIntroduction à la manipulation de série temporelle avec R\nTime Series Analysis (06/11/2021)\nSeasonal plot (library feasts)\n\n\n\nNetwork\nStatic and dynamic network visualization with R\n\n\nShiny\n\nMastering shiny (1st edition)\nMastering shiny solutions (1st edition)\nMastering shiny solutions (1st edition) other version\nAide-mémoire Shiny (ThinkR)\nShiny Gallery\nShiny for Python\nEngineering Production-Grade Shiny Apps (golem)\n\n\n\nQuarto\n\nCHRISTIAN GEBHARD Datavisualization Design\nCreating websites with Quarto and Github\nBuilding all the data things with R and web technologies\nggplot2 workshop (Thomas Lin Pedersen)\nFree themes for Bootstrap\nHTML Colors\nGoogle Fonts\nCreating your personal website using Quarto\n\n\n\nR and QUARTO COMMUNITY\nR-bloggers\nPosit Community\n\nDevelopment\n\nGIT\nLearning Git Branching\nHappy Git and GitHub for the useR\nEt merde, Git!?!\nGITHUB\nGithub Actions for R\nHow To Use GitHub Action Secrets In Your Python Script In 3 Steps\nGitHub Secrets from Python and R\nHow to Use GitHub to Update a Database Automatically\nHow to Use GitHub Actions with R to Run Code Automatically\nWorkflow syntax for GitHub Actions\nA weekly data project in R from the R4DS online learning community\nUNIX\nData Science at the Command Line\nR\n\n\nMastering Software Development in R\nR Internals\nAdvanced R 2e\nAdvanced R Solutions (2nd edition)\nAdvanced R 1st\nAdvanced R Solutions (1st edition)\nR Packages (2nd edition)\nWriting R Extensions\nOutils de développement et de performance (Création de packages)\nHow to write your own R package and publish it on CRAN\nHow to develop good R packages (for open science)\nR-hub\nTravailler avec R\nMastering Software Development in R\n\n\nDjango\n\n\nGenerating a database-driven dropdown menu in Django\n\n\n\nBio-informatique\n\nMaster bioinformatique Rennes\nSFBI (société française de bioinformatique)\nIFB (Institut français de bioinformatique)\nPhylogénie moléculaire - formation avancée"
+    "title": "5  links",
+    "section": "",
+    "text": "0 - Bibliographie R\n\nR Markdown books\n\n\n\n1 - Learn in the Cloud\n\nCogniterra (bioinformatics with Python)\nRosalind (bioinformatics with Python)\nHackerRank (SQL, Python, …)\nLeetCode (SQL, Python, …)\nexecute program (SQL, Python, …)\n\nPythonAnywhere\nPostgreSQL for Everybody\nPostgreSQL Exercises\nPosit Cloud\nPosit Videos\nCRYPTOHACK\n\n\nArtificial Intelligence\n\nrTutor.ai (AI pour R et Python)\nChatlize.ai (AI pour R et Python)\nChatGPT\n\n\n\nDATA Science\n\n1 - Introduction to Data Science (Rafael A Irizarry)\n2 - Advanced Data Science (Rafael A Irizarry)\nTelling Stories with Data\nQUANTIFYING HEALTH\nR for Data Science (2nd edition)\nR for Data Science (1st edition)\nR for Data Science Exercice solutions (1st edition)\nPratiquer R sur le portail SNDS\nHow to make wonderful-looking tables (library gt)\nPopulation Health Data Science with R\n\n\n\nEpidémiologie\n\nR pour l’épidémiologie appliquée et la santé publique\n\n\n\nDATA Visualisation\n\nYet Again: R + Data Science\nFormations R aux MTES & MCTRCT\nFrom Data to Viz\nMaps from Milos\nrspatialdata is a collection of data sources and tutorials on visualising spatial data using R\nSpatial Statistics for Data Science (Paulamoraga)\nGeocomputation with R (1st edition)\nGeocomputation with R (second edition)\nMap Projection Explorer\nSpatial Data Science with R (blog and articles)\nSpatial Data Science With Applications in R\nSpatial Data Science with R and “terra”\nLes données spatiales avec R (15/01/2021)\nMaking Maps with R (31/07/2020)\nCartographie et SIG avec R (ThinkR)\nCompute geometric measurements (package sf)\nSimple Features for R\npostgis - Data Management\nData Visualization\nFundamentals of Data Visualization\nCartographie interactive avec leaflet (ThinkR)\n\n\n\nggplot2\n\nggplot2: Elegant Graphics for Data Analysis (3rd edition)\nSolutions to ggplot2: Elegant Graphics for Data Analysis (3rd edition)\nggplot2 Aesthetic specifications\nggplot2 Function reference\n127 registered extensions available to explore\nTutorial on how to make beautiful plots with R\nThe R Graph Galley\nData Visualization with R\nBe Awesome in ggplot2: A Practical Guide to be Highly Effective - R software and data visualization\nggplot2 tidyverse\nEasy way to mix multiple graphs on the same page\nAligning plots (library cowplot)\nLaying out multiple plots on a page\nFacets (library ggh4x)\nggrepel examples\n132 registered extensions available to explore\nrasterVis\n\n\n\nSéries temporelles\n\nSéries temporelles avec Python (1/4) (STATOSCOP)\nSéries temporelles avec Python (2/4) (STATOSCOP)\nSéries temporelles avec Python (3/4) (STATOSCOP)\nSéries temporelles avec Python (4/4) (STATOSCOP)\nForecasting: Principles and Practice (3rd ed)\nJ’en suis à la leçon 2.9 White noise\nAnalyse de séries temporelles avec R\nSéries temporelles sous R\nIntroduction à la manipulation de série temporelle avec R\nTime Series Analysis (06/11/2021)\nSeasonal plot (library feasts)\n\n\n\nNetwork\nStatic and dynamic network visualization with R\n\n\nShiny\n\nMastering shiny (1st edition)\nMastering shiny solutions (1st edition)\nMastering shiny solutions (1st edition) other version\nAide-mémoire Shiny (ThinkR)\nShiny Gallery\nShiny for Python\nEngineering Production-Grade Shiny Apps (golem)\n\n\n\nQuarto\n\nCHRISTIAN GEBHARD Datavisualization Design\nCreating websites with Quarto and Github\nBuilding all the data things with R and web technologies\nggplot2 workshop (Thomas Lin Pedersen)\nFree themes for Bootstrap\nHTML Colors\nGoogle Fonts\nCreating your personal website using Quarto\n\n\n\nR and QUARTO COMMUNITY\nR-bloggers\nPosit Community\n\nDevelopment\n\nGIT\nLearning Git Branching\nHappy Git and GitHub for the useR\nEt merde, Git!?!\nGITHUB\nGithub Actions for R\nHow To Use GitHub Action Secrets In Your Python Script In 3 Steps\nGitHub Secrets from Python and R\nHow to Use GitHub to Update a Database Automatically\nHow to Use GitHub Actions with R to Run Code Automatically\nWorkflow syntax for GitHub Actions\nA weekly data project in R from the R4DS online learning community\nUNIX\nData Science at the Command Line\nR\n\n\nMastering Software Development in R\nR Internals\nAdvanced R 2e\nAdvanced R Solutions (2nd edition)\nAdvanced R 1st\nAdvanced R Solutions (1st edition)\nR Packages (2nd edition)\nWriting R Extensions\nOutils de développement et de performance (Création de packages)\nHow to write your own R package and publish it on CRAN\nHow to develop good R packages (for open science)\nR-hub\nTravailler avec R\nMastering Software Development in R\n\n\nDjango\n\n\nGenerating a database-driven dropdown menu in Django\n\n\n\nBio-informatique\n\nMaster bioinformatique Rennes\nSFBI (société française de bioinformatique)\nIFB (Institut français de bioinformatique)\nPhylogénie moléculaire - formation avancée",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>links</span>"
+    ]
   },
   {
     "objectID": "links.html#open-data",
     "href": "links.html#open-data",
-    "title": "4  links",
-    "section": "4.2 OPEN DATA",
-    "text": "4.2 OPEN DATA\n\nEnedis Open Data\ndata.gouv\nopendatasoft"
+    "title": "5  links",
+    "section": "5.2 OPEN DATA",
+    "text": "5.2 OPEN DATA\n\nEnedis Open Data\ndata.gouv\nopendatasoft",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>links</span>"
+    ]
   },
   {
     "objectID": "links.html#donnees-climatiques",
     "href": "links.html#donnees-climatiques",
-    "title": "4  links",
-    "section": "4.3 DONNEES CLIMATIQUES",
-    "text": "4.3 DONNEES CLIMATIQUES\n\nclimate.gov (climat)\nNOAA Data\nCopernicus Climate reanalysis\nCarbon bombs under the spotlight\nClimate Lab Book"
+    "title": "5  links",
+    "section": "5.3 DONNEES CLIMATIQUES",
+    "text": "5.3 DONNEES CLIMATIQUES\n\nclimate.gov (climat)\nNOAA Data\nCopernicus Climate reanalysis\nCarbon bombs under the spotlight\nClimate Lab Book",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>links</span>"
+    ]
   },
   {
     "objectID": "links.html#a-classer",
     "href": "links.html#a-classer",
-    "title": "4  links",
-    "section": "4.4 A classer",
-    "text": "4.4 A classer\n\n1) R\n\nR Guide des bonnes pratiques\nCode Snippets in the RStudio IDE\nR Markdown – Les petits trucs qui changent la vie\nTravail collaboratif avec R\nWhat They Forgot to Teach You About R\nR for Graduate Students\nOpération sur les fichiers et les dossiers\nR Programming for Research\nHow to delete rows in R\nimport Excel in R\n\n\n\n2) tidyverse\nDifferences between the base R and magrittr pipes\nThe tidyverse style guide\n\n\nbenchmarking\n\nProfvis — Interactive Visualizations for Profiling R Code\n\n\n\nColor\n\n\n\n\nDjango\n\nSite biblio alchiba (pythonanywhere.com)\n\n\n\nGestion de l’eau\n\nSIDEN SIAN (Tome 1) - Cour des comptes\nLes per et polyfluoroalkylées (PFAS) ARS Auvergne-Rhône-Alpes\nPFAS Contamination in the U.S."
+    "title": "5  links",
+    "section": "5.4 A classer",
+    "text": "5.4 A classer\n\n1) R\n\nR Guide des bonnes pratiques\nCode Snippets in the RStudio IDE\nR Markdown – Les petits trucs qui changent la vie\nTravail collaboratif avec R\nWhat They Forgot to Teach You About R\nR for Graduate Students\nOpération sur les fichiers et les dossiers\nR Programming for Research\nHow to delete rows in R\nimport Excel in R\n\n\n\n2) tidyverse\nDifferences between the base R and magrittr pipes\nThe tidyverse style guide\n\n\nbenchmarking\n\nProfvis — Interactive Visualizations for Profiling R Code\n\n\n\nColor\n\n\n\n\nDjango\n\nSite biblio alchiba (pythonanywhere.com)\n\n\n\nGestion de l’eau\n\nSIDEN SIAN (Tome 1) - Cour des comptes\nLes per et polyfluoroalkylées (PFAS) ARS Auvergne-Rhône-Alpes\nPFAS Contamination in the U.S.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>links</span>"
+    ]
+  },
+  {
+    "objectID": "packages.html",
+    "href": "packages.html",
+    "title": "\n2  R packages data\n",
+    "section": "",
+    "text": "2.1 Chargement des librairies\nlibrary(cranly)",
+    "crumbs": [
+      "Tips",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R CRAN packages dependences</span>"
+    ]
+  },
+  {
+    "objectID": "packages.html#récupérer-les-données-du-cran",
+    "href": "packages.html#récupérer-les-données-du-cran",
+    "title": "\n2  R packages data\n",
+    "section": "\n2.2 Récupérer les données du CRAN",
+    "text": "2.2 Récupérer les données du CRAN\nL’outil de référence pour collecter les informations à jour des paquets est la commande CRAN_package_db()du package tools\n\npackage_db_file &lt;- \"data/package_db.RDS\"\nif (file.exists(package_db_file)) {\n  package_db &lt;- readRDS(package_db_file)\n} else {\n  package_db &lt;- tools::CRAN_package_db()\n  saveRDS(package_db, file = package_db_file)\n}\n\nhead(package_db[,1:4])\n\n        Package Version Priority                        Depends\n1            A3   1.0.0     &lt;NA&gt; R (&gt;= 2.15.0), xtable, pbapply\n2 AalenJohansen     1.0     &lt;NA&gt;                           &lt;NA&gt;\n3      AATtools   0.0.2     &lt;NA&gt;                   R (&gt;= 3.6.0)\n4        ABACUS   1.0.0     &lt;NA&gt;                   R (&gt;= 3.1.0)\n5   abasequence   0.1.0     &lt;NA&gt;                           &lt;NA&gt;\n6    abbreviate     0.1     &lt;NA&gt;                           &lt;NA&gt;\n\nnrow(package_db)\n\n[1] 20741",
+    "crumbs": [
+      "Tips",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R CRAN packages dependences</span>"
+    ]
+  },
+  {
+    "objectID": "structure/01_sf.html",
+    "href": "structure/01_sf.html",
+    "title": "\n1  Entrée en matière\n",
+    "section": "",
+    "text": "1.1 Un exemple pour illustrer\nNous allons nous intéresser au jeu de données world présent dans le package spData\nclass(world)\n\n[1] \"sf\"         \"tbl_df\"     \"tbl\"        \"data.frame\"\n\ndim(world)\n\n[1] 177  11\n\nnames(world)\n\n [1] \"iso_a2\"    \"name_long\" \"continent\" \"region_un\" \"subregion\" \"type\"     \n [7] \"area_km2\"  \"pop\"       \"lifeExp\"   \"gdpPercap\" \"geom\"\nIl s’agit bien d’un objet de type dataframe composé de 177 pays et 11 colonnes. Mais c’est aussi un objet de classe sf1\nSélectionnons un sous-ensemble de world que nous appellerons world_mini\nworld_mini &lt;- world[1:2, 1:3]\nworld_mini\n\nSimple feature collection with 2 features and 3 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -180 ymin: -18.28799 xmax: 180 ymax: -0.95\nGeodetic CRS:  WGS 84\n# A tibble: 2 × 4\n  iso_a2 name_long continent                                                geom\n  &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;                                      &lt;MULTIPOLYGON [°]&gt;\n1 FJ     Fiji      Oceania   (((-180 -16.55522, -179.9174 -16.50178, -179.7933 …\n2 TZ     Tanzania  Africa    (((33.90371 -0.95, 31.86617 -1.02736, 30.76986 -1.…\nComparé à un dataframe standard, un objet de type sf inclut des méta-données géographiques additionnelles :\nainsi que la présence d’une colonne geom (nommé parfois aussi geometry) comportant des éléments géométriques.\nCette colonne particulière est une colonne de classe sfc2.\nA leurs tours les objets de type sfc sont composés d’un ou plusieurs objets de type sfg3.",
+    "crumbs": [
+      "Premier contact",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Entrée en matière</span>"
+    ]
+  },
+  {
+    "objectID": "packages.html#construction-dun-arbre-des-dépendances-avec-cranly",
+    "href": "packages.html#construction-dun-arbre-des-dépendances-avec-cranly",
+    "title": "\n2  R packages data\n",
+    "section": "\n2.3 Construction d’un arbre des dépendances avec cranly\n",
+    "text": "2.3 Construction d’un arbre des dépendances avec cranly\n\n\nlibrary(cranly)\n\nif (file.exists(package_db_file)) {\n  package_db &lt;- readRDS(package_db_file)\n  cran_db &lt;- clean_CRAN_db(package_db)\n} else {\n  cran_db &lt;- clean_CRAN_db()\n}\n\npackage_network &lt;- build_network(cran_db)\n\ncompute_dependence_tree(package_network, \"tibble\")\n\n     package generation\n1     tibble          0\n2      fansi         -1\n3  lifecycle         -1\n4   magrittr         -1\n5    methods         -1\n6     pillar         -1\n7  pkgconfig         -1\n8      rlang         -1\n9      utils         -1\n10     vctrs         -1\n11 grDevices         -2\n12     utils         -2\n13       cli         -2\n14      glue         -2\n15     rlang         -2\n16     fansi         -2\n17 lifecycle         -2\n18      utf8         -2\n19     vctrs         -2\n20     utils         -3\n21 grDevices         -3\n22   methods         -3\n23       cli         -3\n24      glue         -3\n25     rlang         -3\n26 lifecycle         -3\n\ntibble_tree &lt;- build_dependence_tree(package_network, \"tibble\")\nplot(tibble_tree)",
+    "crumbs": [
+      "Tips",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R CRAN packages dependences</span>"
+    ]
+  },
+  {
+    "objectID": "CRAN_packages.html",
+    "href": "CRAN_packages.html",
+    "title": "\n2  Dépendances des packages R CRAN\n",
+    "section": "",
+    "text": "2.1 Chargement des librairies\nlibrary(cranly)",
+    "crumbs": [
+      "Tips",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Dépendances des packages R CRAN</span>"
+    ]
+  },
+  {
+    "objectID": "CRAN_packages.html#récupérer-les-données-du-cran",
+    "href": "CRAN_packages.html#récupérer-les-données-du-cran",
+    "title": "\n2  Dépendances des packages R CRAN\n",
+    "section": "\n2.2 Récupérer les données du CRAN",
+    "text": "2.2 Récupérer les données du CRAN\nL’outil de référence pour collecter les informations à jour des paquets est la commande CRAN_package_db()du package tools\n\npackage_db_file &lt;- \"data/package_db.RDS\"\nif (file.exists(package_db_file)) {\n  package_db &lt;- readRDS(package_db_file)\n} else {\n  package_db &lt;- tools::CRAN_package_db()\n  saveRDS(package_db, file = package_db_file)\n}\n\nhead(package_db[,1:4])\n\n        Package Version Priority                        Depends\n1            A3   1.0.0     &lt;NA&gt; R (&gt;= 2.15.0), xtable, pbapply\n2 AalenJohansen     1.0     &lt;NA&gt;                           &lt;NA&gt;\n3      AATtools   0.0.2     &lt;NA&gt;                   R (&gt;= 3.6.0)\n4        ABACUS   1.0.0     &lt;NA&gt;                   R (&gt;= 3.1.0)\n5   abasequence   0.1.0     &lt;NA&gt;                           &lt;NA&gt;\n6    abbreviate     0.1     &lt;NA&gt;                           &lt;NA&gt;\n\nnrow(package_db)\n\n[1] 20741",
+    "crumbs": [
+      "Tips",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Dépendances des packages R CRAN</span>"
+    ]
+  },
+  {
+    "objectID": "CRAN_packages.html#construction-dun-arbre-des-dépendances-avec-cranly",
+    "href": "CRAN_packages.html#construction-dun-arbre-des-dépendances-avec-cranly",
+    "title": "\n2  Dépendances des packages R CRAN\n",
+    "section": "\n2.3 Construction d’un arbre des dépendances avec cranly1\n",
+    "text": "2.3 Construction d’un arbre des dépendances avec cranly1\n\n\nlibrary(cranly)\n\nif (file.exists(package_db_file)) {\n  package_db &lt;- readRDS(package_db_file)\n  cran_db &lt;- clean_CRAN_db(package_db)\n} else {\n  cran_db &lt;- clean_CRAN_db()\n}\n\npackage_network &lt;- build_network(cran_db)\n\ncompute_dependence_tree(package_network, \"tibble\")\n\n     package generation\n1     tibble          0\n2      fansi         -1\n3  lifecycle         -1\n4   magrittr         -1\n5    methods         -1\n6     pillar         -1\n7  pkgconfig         -1\n8      rlang         -1\n9      utils         -1\n10     vctrs         -1\n11 grDevices         -2\n12     utils         -2\n13       cli         -2\n14      glue         -2\n15     rlang         -2\n16     fansi         -2\n17 lifecycle         -2\n18      utf8         -2\n19     vctrs         -2\n20     utils         -3\n21 grDevices         -3\n22   methods         -3\n23       cli         -3\n24      glue         -3\n25     rlang         -3\n26 lifecycle         -3\n\ntibble_tree &lt;- build_dependence_tree(package_network, \"tibble\")\nplot(tibble_tree)",
+    "crumbs": [
+      "Tips",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Dépendances des packages R CRAN</span>"
+    ]
+  },
+  {
+    "objectID": "links.html",
+    "href": "links.html",
+    "title": "5  links",
+    "section": "",
+    "text": "5.1 Liens Internet",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>links</span>"
+    ]
+  },
+  {
+    "objectID": "CRAN_packages.html#footnotes",
+    "href": "CRAN_packages.html#footnotes",
+    "title": "\n2  Dépendances des packages R CRAN\n",
+    "section": "",
+    "text": "R package dependence trees↩︎",
+    "crumbs": [
+      "Tips",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Dépendances des packages R CRAN</span>"
+    ]
+  },
+  {
+    "objectID": "CRAN_packages.html#construction-dun-arbre-des-dépendances-avec-cranlyhttpscran.r-project.orgwebpackagescranlyvignettesdependence_trees.html",
+    "href": "CRAN_packages.html#construction-dun-arbre-des-dépendances-avec-cranlyhttpscran.r-project.orgwebpackagescranlyvignettesdependence_trees.html",
+    "title": "\n2  R CRAN packages dependences\n",
+    "section": "\n2.3 Construction d’un arbre des dépendances avec cranly1(https://cran.r-project.org/web/packages/cranly/vignettes/dependence_trees.html)",
+    "text": "2.3 Construction d’un arbre des dépendances avec cranly1(https://cran.r-project.org/web/packages/cranly/vignettes/dependence_trees.html)\n\nlibrary(cranly)\n\nif (file.exists(package_db_file)) {\n  package_db &lt;- readRDS(package_db_file)\n  cran_db &lt;- clean_CRAN_db(package_db)\n} else {\n  cran_db &lt;- clean_CRAN_db()\n}\n\npackage_network &lt;- build_network(cran_db)\n\ncompute_dependence_tree(package_network, \"tibble\")\n\n     package generation\n1     tibble          0\n2      fansi         -1\n3  lifecycle         -1\n4   magrittr         -1\n5    methods         -1\n6     pillar         -1\n7  pkgconfig         -1\n8      rlang         -1\n9      utils         -1\n10     vctrs         -1\n11 grDevices         -2\n12     utils         -2\n13       cli         -2\n14      glue         -2\n15     rlang         -2\n16     fansi         -2\n17 lifecycle         -2\n18      utf8         -2\n19     vctrs         -2\n20     utils         -3\n21 grDevices         -3\n22   methods         -3\n23       cli         -3\n24      glue         -3\n25     rlang         -3\n26 lifecycle         -3\n\ntibble_tree &lt;- build_dependence_tree(package_network, \"tibble\")\nplot(tibble_tree)",
+    "crumbs": [
+      "Tips",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R CRAN packages dependences</span>"
+    ]
   }
 ]

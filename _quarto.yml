@@ -25,6 +25,9 @@ book:
     - part: "Premier contact"
       chapters: 
         - structure/01_sf.qmd
+    - part: "Tips"
+      chapters:
+        - CRAN_packages.qmd
     - part: "Digressions"
       chapters: 
         - structure/99_errements.qmd

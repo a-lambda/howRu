@@ -2,10 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.chapelier-fou.fr/howRu/summary.html</loc>
-    <lastmod>2024-03-06T10:08:03.228Z</lastmod>
+    <lastmod>2024-02-07T13:59:30.794Z</lastmod>
   </url>
   <url>
     <loc>https://www.chapelier-fou.fr/howRu/links.html</loc>
-    <lastmod>2024-03-06T10:08:09.008Z</lastmod>
+    <lastmod>2024-04-14T07:33:36.120Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.chapelier-fou.fr/howRu/packages.html</loc>
+    <lastmod>2024-04-17T11:55:02.114Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.chapelier-fou.fr/howRu/structure/99_errements.html</loc>
+    <lastmod>2024-02-07T13:59:30.793Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.chapelier-fou.fr/howRu/structure/01_sf.html</loc>
+    <lastmod>2024-02-07T13:59:30.792Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.chapelier-fou.fr/howRu/index.html</loc>
+    <lastmod>2024-01-10T16:08:18.233Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.chapelier-fou.fr/howRu/intro.html</loc>
+    <lastmod>2024-01-12T10:38:00.245Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.chapelier-fou.fr/howRu/prerequis.html</loc>
+    <lastmod>2024-02-07T13:59:30.791Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.chapelier-fou.fr/howRu/CRAN_packages.html</loc>
+    <lastmod>2024-04-17T12:34:10.685Z</lastmod>
   </url>
 </urlset>
