@@ -44,9 +44,11 @@ if (file.exists(package_db_file)) {
 
 package_network <- build_network(cran_db)
 
-compute_dependence_tree(package_network, "tibble")
+package <- "visNetwork"
 
-tibble_tree <- build_dependence_tree(package_network, "tibble")
+compute_dependence_tree(package_network, package)
+
+tibble_tree <- build_dependence_tree(package_network, package)
 plot(tibble_tree)
 
 
