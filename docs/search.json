@@ -131,61 +131,61 @@
   {
     "objectID": "summary.html#footnotes",
     "href": "summary.html#footnotes",
-    "title": "\n4  Summary\n",
+    "title": "\n5  Summary\n",
     "section": "",
     "text": "Ce texte est invisible ?↩︎",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Summary</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Summary</span>"
     ]
   },
   {
     "objectID": "links.html",
     "href": "links.html",
-    "title": "5  links",
+    "title": "6  links",
     "section": "",
-    "text": "5.1 Liens Internet",
+    "text": "6.1 Liens Internet",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>links</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>links</span>"
     ]
   },
   {
     "objectID": "links.html#liens-internet",
     "href": "links.html#liens-internet",
-    "title": "5  links",
+    "title": "6  links",
     "section": "",
     "text": "0 - Bibliographie R\n\nR Markdown books\n\n\n\n1 - Learn in the Cloud\n\nCogniterra (bioinformatics with Python)\nRosalind (bioinformatics with Python)\nHackerRank (SQL, Python, …)\nLeetCode (SQL, Python, …)\nexecute program (SQL, Python, …)\n\nPythonAnywhere\nPostgreSQL for Everybody\nPostgreSQL Exercises\nPosit Cloud\nPosit Videos\nCRYPTOHACK\n\n\nArtificial Intelligence\n\nrTutor.ai (AI pour R et Python)\nChatlize.ai (AI pour R et Python)\nChatGPT\n\n\n\nDATA Science\n\n1 - Introduction to Data Science (Rafael A Irizarry)\n2 - Advanced Data Science (Rafael A Irizarry)\nTelling Stories with Data\nQUANTIFYING HEALTH\nR for Data Science (2nd edition)\nR for Data Science (1st edition)\nR for Data Science Exercice solutions (1st edition)\nPratiquer R sur le portail SNDS\nHow to make wonderful-looking tables (library gt)\nPopulation Health Data Science with R\n\n\n\nEpidémiologie\n\nR pour l’épidémiologie appliquée et la santé publique\n\n\n\nDATA Visualisation\n\nYet Again: R + Data Science\nFormations R aux MTES & MCTRCT\nFrom Data to Viz\nMaps from Milos\nrspatialdata is a collection of data sources and tutorials on visualising spatial data using R\nSpatial Statistics for Data Science (Paulamoraga)\nGeocomputation with R (1st edition)\nGeocomputation with R (second edition)\nMap Projection Explorer\nSpatial Data Science with R (blog and articles)\nSpatial Data Science With Applications in R\nSpatial Data Science with R and “terra”\nLes données spatiales avec R (15/01/2021)\nMaking Maps with R (31/07/2020)\nCartographie et SIG avec R (ThinkR)\nCompute geometric measurements (package sf)\nSimple Features for R\npostgis - Data Management\nData Visualization\nFundamentals of Data Visualization\nCartographie interactive avec leaflet (ThinkR)\n\n\n\nggplot2\n\nggplot2: Elegant Graphics for Data Analysis (3rd edition)\nSolutions to ggplot2: Elegant Graphics for Data Analysis (3rd edition)\nggplot2 Aesthetic specifications\nggplot2 Function reference\n127 registered extensions available to explore\nTutorial on how to make beautiful plots with R\nThe R Graph Galley\nData Visualization with R\nBe Awesome in ggplot2: A Practical Guide to be Highly Effective - R software and data visualization\nggplot2 tidyverse\nEasy way to mix multiple graphs on the same page\nAligning plots (library cowplot)\nLaying out multiple plots on a page\nFacets (library ggh4x)\nggrepel examples\n132 registered extensions available to explore\nrasterVis\n\n\n\nSéries temporelles\n\nSéries temporelles avec Python (1/4) (STATOSCOP)\nSéries temporelles avec Python (2/4) (STATOSCOP)\nSéries temporelles avec Python (3/4) (STATOSCOP)\nSéries temporelles avec Python (4/4) (STATOSCOP)\nForecasting: Principles and Practice (3rd ed)\nJ’en suis à la leçon 2.9 White noise\nAnalyse de séries temporelles avec R\nSéries temporelles sous R\nIntroduction à la manipulation de série temporelle avec R\nTime Series Analysis (06/11/2021)\nSeasonal plot (library feasts)\n\n\n\nNetwork\nStatic and dynamic network visualization with R\n\n\nShiny\n\nMastering shiny (1st edition)\nMastering shiny solutions (1st edition)\nMastering shiny solutions (1st edition) other version\nAide-mémoire Shiny (ThinkR)\nShiny Gallery\nShiny for Python\nEngineering Production-Grade Shiny Apps (golem)\n\n\n\nQuarto\n\nCHRISTIAN GEBHARD Datavisualization Design\nCreating websites with Quarto and Github\nBuilding all the data things with R and web technologies\nggplot2 workshop (Thomas Lin Pedersen)\nFree themes for Bootstrap\nHTML Colors\nGoogle Fonts\nCreating your personal website using Quarto\n\n\n\nR and QUARTO COMMUNITY\nR-bloggers\nPosit Community\n\nDevelopment\n\nGIT\nLearning Git Branching\nHappy Git and GitHub for the useR\nEt merde, Git!?!\nGITHUB\nGithub Actions for R\nHow To Use GitHub Action Secrets In Your Python Script In 3 Steps\nGitHub Secrets from Python and R\nHow to Use GitHub to Update a Database Automatically\nHow to Use GitHub Actions with R to Run Code Automatically\nWorkflow syntax for GitHub Actions\nA weekly data project in R from the R4DS online learning community\nUNIX\nData Science at the Command Line\nR\n\n\nMastering Software Development in R\nR Internals\nAdvanced R 2e\nAdvanced R Solutions (2nd edition)\nAdvanced R 1st\nAdvanced R Solutions (1st edition)\nR Packages (2nd edition)\nWriting R Extensions\nOutils de développement et de performance (Création de packages)\nHow to write your own R package and publish it on CRAN\nHow to develop good R packages (for open science)\nR-hub\nTravailler avec R\nMastering Software Development in R\n\n\nDjango\n\n\nGenerating a database-driven dropdown menu in Django\n\n\n\nBio-informatique\n\nMaster bioinformatique Rennes\nSFBI (société française de bioinformatique)\nIFB (Institut français de bioinformatique)\nPhylogénie moléculaire - formation avancée",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>links</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>links</span>"
     ]
   },
   {
     "objectID": "links.html#open-data",
     "href": "links.html#open-data",
-    "title": "5  links",
-    "section": "5.2 OPEN DATA",
-    "text": "5.2 OPEN DATA\n\nEnedis Open Data\ndata.gouv\nopendatasoft",
+    "title": "6  links",
+    "section": "6.2 OPEN DATA",
+    "text": "6.2 OPEN DATA\n\nEnedis Open Data\ndata.gouv\nopendatasoft",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>links</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>links</span>"
     ]
   },
   {
     "objectID": "links.html#donnees-climatiques",
     "href": "links.html#donnees-climatiques",
-    "title": "5  links",
-    "section": "5.3 DONNEES CLIMATIQUES",
-    "text": "5.3 DONNEES CLIMATIQUES\n\nclimate.gov (climat)\nNOAA Data\nCopernicus Climate reanalysis\nCarbon bombs under the spotlight\nClimate Lab Book",
+    "title": "6  links",
+    "section": "6.3 DONNEES CLIMATIQUES",
+    "text": "6.3 DONNEES CLIMATIQUES\n\nclimate.gov (climat)\nNOAA Data\nCopernicus Climate reanalysis\nCarbon bombs under the spotlight\nClimate Lab Book",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>links</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>links</span>"
     ]
   },
   {
     "objectID": "links.html#a-classer",
     "href": "links.html#a-classer",
-    "title": "5  links",
-    "section": "5.4 A classer",
-    "text": "5.4 A classer\n\n1) R\n\nR Guide des bonnes pratiques\nCode Snippets in the RStudio IDE\nR Markdown – Les petits trucs qui changent la vie\nTravail collaboratif avec R\nWhat They Forgot to Teach You About R\nR for Graduate Students\nOpération sur les fichiers et les dossiers\nR Programming for Research\nHow to delete rows in R\nimport Excel in R\n\n\n\n2) tidyverse\nDifferences between the base R and magrittr pipes\nThe tidyverse style guide\n\n\nbenchmarking\n\nProfvis — Interactive Visualizations for Profiling R Code\n\n\n\nColor\n\n\n\n\nDjango\n\nSite biblio alchiba (pythonanywhere.com)\n\n\n\nGestion de l’eau\n\nSIDEN SIAN (Tome 1) - Cour des comptes\nLes per et polyfluoroalkylées (PFAS) ARS Auvergne-Rhône-Alpes\nPFAS Contamination in the U.S.",
+    "title": "6  links",
+    "section": "6.4 A classer",
+    "text": "6.4 A classer\n\n1) R\n\nR Guide des bonnes pratiques\nCode Snippets in the RStudio IDE\nR Markdown – Les petits trucs qui changent la vie\nTravail collaboratif avec R\nWhat They Forgot to Teach You About R\nR for Graduate Students\nOpération sur les fichiers et les dossiers\nR Programming for Research\nHow to delete rows in R\nimport Excel in R\n\n\n\n2) tidyverse\nDifferences between the base R and magrittr pipes\nThe tidyverse style guide\n\n\nbenchmarking\n\nProfvis — Interactive Visualizations for Profiling R Code\n\n\n\nColor\n\n\n\n\nDjango\n\nSite biblio alchiba (pythonanywhere.com)\n\n\n\nGestion de l’eau\n\nSIDEN SIAN (Tome 1) - Cour des comptes\nLes per et polyfluoroalkylées (PFAS) ARS Auvergne-Rhône-Alpes\nPFAS Contamination in the U.S.",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>links</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>links</span>"
     ]
   },
   {
