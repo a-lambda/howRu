@@ -1,0 +1,144 @@
+# Marvel Universe Network
+
+```{r}
+#| label: load_libraries
+#| echo: false
+#| message: false
+#| warning: false
+
+library(rvest)
+library(tidyverse)
+library(tidygraph)
+library(visNetwork)
+library(janitor)
+```
+
+## Récupération des données depuis Wikipedia
+
+```{r}
+#| label: scrap
+
+url1 <- "https://en.wikipedia.org/w/index.php?title=Marvel_Cinematic_Universe:_Phase_One&oldid=1096778874"
+url2 <- "https://en.wikipedia.org/w/index.php?title=Marvel_Cinematic_Universe:_Phase_Two&oldid=1097878759"
+url3 <- "https://en.wikipedia.org/w/index.php?title=Marvel_Cinematic_Universe:_Phase_Three&oldid=1096776335"
+
+urls <- c(url1, url2, url3)
+
+get_table <- function(wiki_url) {
+  
+  df <- wiki_url |> 
+    read_html() |> 
+    html_elements(".wikitable") |> 
+    html_table(na.strings = "") |> 
+    pluck(3) |> 
+    row_to_names(row_number = 1) |> 
+    pivot_longer(
+      cols = -c("Character"), 
+      names_to = "Movie", 
+      values_to = "Actor", 
+      values_drop_na = TRUE) |> 
+    mutate(
+      Actor = str_remove_all(Actor, "\\[|\\]"),
+      Actor = str_remove_all(Actor, "[:digit:]"),
+      Character = str_remove_all(Character, '\\\"'),
+      Movie = str_replace_all(Movie, "([a-z]|:)([A-Z])", "\\1 \\2"),
+      Character = str_replace_all(Character, "([a-z])([A-Z])", "\\1 \\2"),
+      Character = str_remove(Character, "OS$"),
+      Character = str_trim(Character),
+      Actor = str_remove(Actor, "[C|V]$"),
+      Actor = str_replace_all(Actor, "([a-z])([A-Z])", "\\1 \\2"),
+      Movie = str_trim(Movie),
+      Movie = recode(Movie, "Thor" = "Thor 1", "Iron Man" = "Iron Man 1")
+    ) |> 
+    select(-Actor)
+  
+  return(df)
+
+}
+
+df_marvel <- map_dfr(urls, get_table)
+
+```
+
+## Analyse de données exploratoire
+
+```{r}
+#| label: analysis
+
+# Personnage apparaissant le plus souvent (en terme de films)
+
+df_marvel |>
+  count(Character, sort = TRUE)
+
+# Films faisant intervenir le plus de personnages
+
+df_marvel |>
+  count(Movie, sort = TRUE)
+
+```
+
+## Création d'un graphe
+
+```{r}
+#|label: graph
+network <- df_marvel |> 
+  as_tbl_graph()
+
+class(network)
+
+# Mesure de centralité, par exemple le degré associé à un noeud
+
+network |> 
+  activate(nodes) |> # on considère la table des noeuds ou "vertices"
+  mutate(degree = centrality_degree()) |> 
+  as_tibble() |>
+  arrange(desc(degree))
+
+```
+
+## Interactivité avec le paquet `visNetwork`
+
+Pour aller plus loin dans les options ne pas hésiter à visiter [visNetwork, an R package for interactive network visualization](https://datastorm-open.github.io/visNetwork/) 
+
+```{r}
+#| label: visNetwork
+
+vis_network <- network |> 
+  mutate(group = if_else(
+    condition = name %in% unique(df_marvel$Character),
+    true = "Character",
+    false = "Movie"
+  )) |> 
+  toVisNetworkData()
+
+visNetwork(
+  nodes = vis_network$nodes,
+  edges = vis_network$edges,
+  width = "100%",
+  height = "600px",
+  main = "L'univers filmographique Marvel") |> 
+  visLayout(randomSeed = 1000) |> 
+  addFontAwesome() |> 
+  visGroups(
+    groupname = "Movie",
+    shape = "icon",
+    icon = list(code = "f008", color = "darkblue")
+  ) |> 
+  visGroups(
+    groupname = "Character",
+    shape = "icon",
+    icon = list(code = "f007", color = "red")
+  ) |> 
+  visOptions(
+    highlightNearest = list(enabled = TRUE, hover = TRUE),
+    nodesIdSelection = TRUE
+  ) |> 
+  visInteraction(navigationButtons = TRUE)
+
+```
+
+
+
+
+
+

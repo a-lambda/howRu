@@ -120,12 +120,12 @@
   {
     "objectID": "structure/99_errements.html",
     "href": "structure/99_errements.html",
-    "title": "3  Visions",
+    "title": "4  Visions",
     "section": "",
     "text": "Re-mot-deler le monde\nA la frontière de nos mots nous voulons dicter l’univers. Mais que n’en disent sur cette Terre, tous ceux qu’on laisse pour sots ?\nUn renard affublé d’un corbeau, sortis d’une élégante fable, ne sauraient-ils être encore plus beaux, à la lumière de leur corde sensible ?\nLes êtres à nos yeux invisibles ne sont-ils point, à fleur de peau, des témoins beaucoup plus attachés, à leur terrier que l’on toise de haut ?\nCorbeau, renard, ou piètre vermisseau, pâles images réduites à ces lignes, il se trame dans vos modestes clairières bien plus que ce simple univers.\nNos lisières lexicales occultent l’inentendu et nous confondent en lettres convenues. Alors brisons, de nos rêves, toutes les valeurs, et révélons ensemble cet autre ailleurs.",
     "crumbs": [
       "Digressions",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Visions</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Visions</span>"
     ]
   },
   {
@@ -186,6 +186,50 @@
     "text": "5.4 A classer\n\n1) R\n\nR Guide des bonnes pratiques\nCode Snippets in the RStudio IDE\nR Markdown – Les petits trucs qui changent la vie\nTravail collaboratif avec R\nWhat They Forgot to Teach You About R\nR for Graduate Students\nOpération sur les fichiers et les dossiers\nR Programming for Research\nHow to delete rows in R\nimport Excel in R\n\n\n\n2) tidyverse\nDifferences between the base R and magrittr pipes\nThe tidyverse style guide\n\n\nbenchmarking\n\nProfvis — Interactive Visualizations for Profiling R Code\n\n\n\nColor\n\n\n\n\nDjango\n\nSite biblio alchiba (pythonanywhere.com)\n\n\n\nGestion de l’eau\n\nSIDEN SIAN (Tome 1) - Cour des comptes\nLes per et polyfluoroalkylées (PFAS) ARS Auvergne-Rhône-Alpes\nPFAS Contamination in the U.S.",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>links</span>"
+    ]
+  },
+  {
+    "objectID": "Marvel.html",
+    "href": "Marvel.html",
+    "title": "\n3  Marvel Universe Network\n",
+    "section": "",
+    "text": "3.1 Récupération des données depuis Wikipedia\nurl1 &lt;- \"https://en.wikipedia.org/w/index.php?title=Marvel_Cinematic_Universe:_Phase_One&oldid=1096778874\"\nurl2 &lt;- \"https://en.wikipedia.org/w/index.php?title=Marvel_Cinematic_Universe:_Phase_Two&oldid=1097878759\"\nurl3 &lt;- \"https://en.wikipedia.org/w/index.php?title=Marvel_Cinematic_Universe:_Phase_Three&oldid=1096776335\"\n\nurls &lt;- c(url1, url2, url3)\n\nget_table &lt;- function(wiki_url) {\n  \n  df &lt;- wiki_url |&gt; \n    read_html() |&gt; \n    html_elements(\".wikitable\") |&gt; \n    html_table(na.strings = \"\") |&gt; \n    pluck(3) |&gt; \n    row_to_names(row_number = 1) |&gt; \n    pivot_longer(\n      cols = -c(\"Character\"), \n      names_to = \"Movie\", \n      values_to = \"Actor\", \n      values_drop_na = TRUE) |&gt; \n    mutate(\n      Actor = str_remove_all(Actor, \"\\\\[|\\\\]\"),\n      Actor = str_remove_all(Actor, \"[:digit:]\"),\n      Character = str_remove_all(Character, '\\\\\\\"'),\n      Movie = str_replace_all(Movie, \"([a-z]|:)([A-Z])\", \"\\\\1 \\\\2\"),\n      Character = str_replace_all(Character, \"([a-z])([A-Z])\", \"\\\\1 \\\\2\"),\n      Character = str_remove(Character, \"OS$\"),\n      Character = str_trim(Character),\n      Actor = str_remove(Actor, \"[C|V]$\"),\n      Actor = str_replace_all(Actor, \"([a-z])([A-Z])\", \"\\\\1 \\\\2\"),\n      Movie = str_trim(Movie),\n      Movie = recode(Movie, \"Thor\" = \"Thor 1\", \"Iron Man\" = \"Iron Man 1\")\n    ) |&gt; \n    select(-Actor)\n  \n  return(df)\n\n}\n\ndf_marvel &lt;- map_dfr(urls, get_table)",
+    "crumbs": [
+      "Tips",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Marvel Universe Network</span>"
+    ]
+  },
+  {
+    "objectID": "Marvel.html#analyse-de-données-exploratoire",
+    "href": "Marvel.html#analyse-de-données-exploratoire",
+    "title": "\n3  Marvel Universe Network\n",
+    "section": "\n3.2 Analyse de données exploratoire",
+    "text": "3.2 Analyse de données exploratoire\n\n# Personnage apparaissant le plus souvent (en terme de films)\n\ndf_marvel |&gt;\n  count(Character, sort = TRUE)\n\n# A tibble: 59 × 2\n   Character                                          n\n   &lt;chr&gt;                                          &lt;int&gt;\n 1 Nick Fury                                         11\n 2 Steve Rogers Captain America                      11\n 3 Tony Stark Iron Man                               10\n 4 Bruce Banner Hulk                                  8\n 5 Natasha Romanoff Black Widow                       8\n 6 Thor                                               8\n 7 James Rhodey Rhodes War Machine / Iron Patriot     6\n 8 Sam Wilson Falcon                                  6\n 9 Virginia Pepper Potts                              6\n10 Loki                                               5\n# ℹ 49 more rows\n\n# Films faisant intervenir le plus de personnages\n\ndf_marvel |&gt;\n  count(Movie, sort = TRUE)\n\n# A tibble: 23 × 2\n   Movie                                   n\n   &lt;chr&gt;                               &lt;int&gt;\n 1 Avengers: Endgame                      44\n 2 Avengers: Infinity War                 32\n 3 Captain America: Civil War             16\n 4 Avengers: Age of Ultron                15\n 5 Marvel's The Avengers                  11\n 6 Captain America: The Winter Soldier     9\n 7 Spider-Man: Far From Home               9\n 8 Spider-Man: Homecoming                  9\n 9 Guardians of the Galaxy Vol. 2          8\n10 Black Panther                           7\n# ℹ 13 more rows",
+    "crumbs": [
+      "Tips",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Marvel Universe Network</span>"
+    ]
+  },
+  {
+    "objectID": "Marvel.html#création-dun-graphe",
+    "href": "Marvel.html#création-dun-graphe",
+    "title": "\n3  Marvel Universe Network\n",
+    "section": "\n3.3 Création d’un graphe",
+    "text": "3.3 Création d’un graphe\n\n#|label: graph\nnetwork &lt;- df_marvel |&gt; \n  as_tbl_graph()\n\nclass(network)\n\n[1] \"tbl_graph\" \"igraph\"   \n\n# Mesure de centralité, par exemple le degré associé à un noeud\n\nnetwork |&gt; \n  activate(nodes) |&gt; # on considère la table des noeuds ou \"vertices\"\n  mutate(degree = centrality_degree()) |&gt; \n  as_tibble() |&gt;\n  arrange(desc(degree))\n\n# A tibble: 82 × 2\n   name                                           degree\n   &lt;chr&gt;                                           &lt;dbl&gt;\n 1 Nick Fury                                          11\n 2 Steve Rogers Captain America                       11\n 3 Tony Stark Iron Man                                10\n 4 Bruce Banner Hulk                                   8\n 5 Natasha Romanoff Black Widow                        8\n 6 Thor                                                8\n 7 Virginia Pepper Potts                               6\n 8 James Rhodey Rhodes War Machine / Iron Patriot      6\n 9 Sam Wilson Falcon                                   6\n10 Loki                                                5\n# ℹ 72 more rows",
+    "crumbs": [
+      "Tips",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Marvel Universe Network</span>"
+    ]
+  },
+  {
+    "objectID": "Marvel.html#interactivité-avec-le-paquet-visnetwork",
+    "href": "Marvel.html#interactivité-avec-le-paquet-visnetwork",
+    "title": "\n3  Marvel Universe Network\n",
+    "section": "\n3.4 Interactivité avec le paquet visNetwork\n",
+    "text": "3.4 Interactivité avec le paquet visNetwork\n\nPour aller plus loin dans les options ne pas hésiter à visiter visNetwork, an R package for interactive network visualization\n\nvis_network &lt;- network |&gt; \n  mutate(group = if_else(\n    condition = name %in% unique(df_marvel$Character),\n    true = \"Character\",\n    false = \"Movie\"\n  )) |&gt; \n  toVisNetworkData()\n\nvisNetwork(\n  nodes = vis_network$nodes,\n  edges = vis_network$edges,\n  width = \"100%\",\n  height = \"600px\",\n  main = \"L'univers filmographique Marvel\") |&gt; \n  visLayout(randomSeed = 1000) |&gt; \n  addFontAwesome() |&gt; \n  visGroups(\n    groupname = \"Movie\",\n    shape = \"icon\",\n    icon = list(code = \"f008\", color = \"darkblue\")\n  ) |&gt; \n  visGroups(\n    groupname = \"Character\",\n    shape = \"icon\",\n    icon = list(code = \"f007\", color = \"red\")\n  ) |&gt; \n  visOptions(\n    highlightNearest = list(enabled = TRUE, hover = TRUE),\n    nodesIdSelection = TRUE\n  ) |&gt; \n  visInteraction(navigationButtons = TRUE)",
+    "crumbs": [
+      "Tips",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Marvel Universe Network</span>"
     ]
   }
 ]

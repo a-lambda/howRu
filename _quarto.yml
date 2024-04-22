@@ -58,6 +58,7 @@ book:
     - part: "Tips"
       chapters:
         - CRAN_packages.qmd
+        - Marvel.qmd
     - part: "Digressions"
       chapters: 
         - structure/99_errements.qmd
