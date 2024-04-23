@@ -26,7 +26,7 @@ urls <- c(url1, url2, url3)
 
 get_table <- function(wiki_url) {
   
-  df <- wiki_url |> 
+  tib <- wiki_url |> 
     read_html() |> 
     html_elements(".wikitable") |> 
     html_table(na.strings = "") |> 
@@ -40,24 +40,25 @@ get_table <- function(wiki_url) {
     mutate(
       Actor = str_remove_all(Actor, "\\[|\\]"),
       Actor = str_remove_all(Actor, "[:digit:]"),
+      Actor = str_remove(Actor, "[C|V]$"),
+      Actor = str_replace_all(Actor, "([a-z])([A-Z])", "\\1 \\2"),
       Character = str_remove_all(Character, '\\\"'),
-      Movie = str_replace_all(Movie, "([a-z]|:)([A-Z])", "\\1 \\2"),
       Character = str_replace_all(Character, "([a-z])([A-Z])", "\\1 \\2"),
       Character = str_remove(Character, "OS$"),
       Character = str_trim(Character),
-      Actor = str_remove(Actor, "[C|V]$"),
-      Actor = str_replace_all(Actor, "([a-z])([A-Z])", "\\1 \\2"),
+      Movie = str_replace_all(Movie, "([a-z]|:)([A-Z])", "\\1 \\2"),
       Movie = str_trim(Movie),
       Movie = recode(Movie, "Thor" = "Thor 1", "Iron Man" = "Iron Man 1")
     ) |> 
     select(-Actor)
   
-  return(df)
+  return(tib)
 
 }
 
 df_marvel <- map_dfr(urls, get_table)
-
+df_marvel <- map(urls, get_table) |> 
+  list_rbind() # map_dfr(urls, get_table) is deprecated
 ```
 
 ## Analyse de données exploratoire
