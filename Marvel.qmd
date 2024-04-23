@@ -56,7 +56,6 @@ get_table <- function(wiki_url) {
 
 }
 
-df_marvel <- map_dfr(urls, get_table)
 df_marvel <- map(urls, get_table) |> 
   list_rbind() # map_dfr(urls, get_table) is deprecated
 ```
