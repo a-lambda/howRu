@@ -1,0 +1,77 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: inline
+---
+# visNetwork
+
+```{r}
+#| label: load_packages
+library(tidyverse)
+library(visNetwork)
+```
+
+## Chargement d'un exemple relativement simple
+
+
+```{r}
+
+nodes <- data.frame(
+  
+  id = 1:5,
+                    
+  # add labels on nodes
+  label = c(
+  "PythonAnywhere",
+  "PostgreSQL for Everybody",
+  "PostgreSQL Exercises",
+  "Cogniterra (bioinformatics with Python)",
+  "Git under the hood"
+  ),
+  
+  # add groups on nodes 
+  group = c("GrA", "GrB", "GrB", "GrB", "GrC"),
+  
+  # size adding value
+  value = 1:5,          
+  
+  # control shape of nodes
+  shape = c("box", "box", "box", "box", "box"),
+  
+  # tooltip (html or character), when the mouse is above
+  title = c(
+    '<a href="https://www.pythonanywhere.com/">https://www.pythonanywhere.com/</a>',
+    '<a href="https://www.pg4e.com/">https://www.pg4e.com/</a>',
+    '<a href="https://pgexercises.com/">https://pgexercises.com/</a>',
+    '<a href="https://cogniterra.org/learn">https://cogniterra.org/learn</a>',
+    '<a href="https://youtu.be/RxHJdapz2p0">Git under the hood</a>'
+  ),
+  
+  # color
+  color = c("pink", "lightblue", "orange", "lightgreen", "white"),
+  
+  # shadow
+  shadow = c(TRUE, TRUE, TRUE, TRUE, TRUE)
+)
+
+# head(nodes)
+# id  label group value    shape                     title    color shadow
+#  1 Node 1   GrA     1   square <p><b>1</b><br>Node !</p>  darkred  FALSE
+#  2 Node 2   GrB     2 triangle <p><b>2</b><br>Node !</p>     grey   TRUE
+
+edges <- data.frame(
+  from = c(2,3,4), 
+  to = c(1,1,1), 
+  label = c(
+    "2 to 1",
+    "3 to 1",
+    "4 to 1"
+  ) 
+)
+
+visNetwork(nodes, edges, height = "500px", width = "100%")
+
+
+```
+
+
