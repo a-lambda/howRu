@@ -1,0 +1,192 @@
+# Matrices et réseaux
+
+```{r}
+#| label: loading_packages
+#| message: false
+#| warning: false
+#| echo: false
+library(igraph)
+library(visNetwork)
+library(ggplot2)
+library(tidyr)
+```
+
+## Taille de la matrice carrée : n = 10
+ 
+```{r}
+n <- 10
+
+matrice <- function(n) {
+  set.seed(1967)
+  v <- sample(c(0,1), size = n^2, replace = TRUE)
+  M <- matrix(v, nrow = n, ncol = n)
+  # delete edges from node to itself
+  for (i in 1:n) {
+    M[i, i] <- 0
+  }
+  return(M)
+}
+
+A <- matrice(n)
+A
+G <- graph_from_adjacency_matrix(A)
+data <- toVisNetworkData(G)
+
+```
+
+
+
+
+```{r}
+data$nodes$label <- paste(data$nodes$label)
+data$nodes$shape <- "circle"
+data$edges$arrows <- "to"
+
+head(data$nodes)
+head(data$edges)
+
+visNetwork(nodes = data$nodes, edges = data$edges) |> 
+  visNodes(color = list(hover = list(background = "yellow", border = "red"))) |>
+  visEdges(color = list(highlight = "pink",hover = "red")) |> 
+  visInteraction(hover = TRUE)
+
+```
+
+## Large graph analysis
+
+1. Calcul des degrés de chaque noeud :
+
+  - calculé manuellement à partir de la matrice d'adjacence $A$
+
+```{r}
+#| label: degree_from_A
+#| 
+degre_out <- 1:n |> sapply(\(x) {sum(A[x, ])}) 
+degre_in <- 1:n |>  sapply(\(x) {sum(A[, x])})
+degre_all <- degre_out + degre_in
+
+degre_out
+degre_in
+degre_all
+
+```
+
+  - calculé à partir du graph $G$ avec la fonction`degree` du package ìgraph`
+  
+```{r}
+#| label: degree_igraph
+#| 
+degree_out <- degree(G, v = V(G), mode = c("out"))
+degree_in <- degree(G, v = V(G), mode = c("in"))
+degree_all <- degree(G, v = V(G), mode = c("all"))
+
+degree_out
+degree_in
+degree_all
+
+```
+
+  - affichage des degrés par noeud
+
+```{r}
+
+df_degree_per_node <- data.frame(
+  node = 1:length(V(G)), 
+  degre_all = degre_all,
+  degre_in = degre_in,
+  degre_out = degre_out
+) |> 
+  pivot_longer(
+    cols = c(degre_all, degre_in, degre_out), 
+    names_prefix = "degre_",
+    names_to = "degree_type", 
+    values_to = "value"
+  )
+
+head(df_degree_per_node)
+
+df_degree_per_node %>%
+  ggplot() +
+  geom_point(aes(
+    x = node, 
+    y = value, 
+    shape = degree_type, 
+    color = degree_type),
+    size = 2
+  ) +
+  labs(x = "noeud", y = "degré") +
+  scale_x_continuous(breaks = 1:n) +
+  scale_y_continuous(
+    breaks = \(x) {seq(0, max(x))}) +
+  theme(
+    panel.grid.minor = element_blank(),
+    panel.grid.major = element_line(
+      color = "grey60",
+      linewidth = 0.1,
+      linetype = 3),
+    panel.background = element_blank(),
+    legend.position = "right"
+  ) +
+  labs(
+    title = "degree per node",
+    
+  )
+
+```
+
+2. Calcul **Degree Distribution**
+
+The degree distribution of a given degree $k$ in a graph $G$ is the ratio of the number of vertices with degree $k$ to the total number of vertices
+
+$$P(k) = \frac{n_k}{n}$$ avec $n_k$ = number of vertices with degree $k$
+
+  - calculé manuellement à partir de la matrice d'adjacence $A$
+
+```{r}
+degre_distrib <- proportions(table(degre_all))
+degre_distrib
+
+```
+
+  - calculé à partir du graph $G$ avec la fonction`degree_distribution` du package ìgraph`
+
+```{r}
+
+degree_distrib <- degree_distribution(G)
+df_degree_distrib <- data.frame(degree = 0:max(degree_all), percent = degree_distrib * 100)
+head(df_degree_distrib)
+
+df_degree_distrib |> 
+  ggplot(aes(x = degree, y = percent)) +
+  scale_x_continuous(breaks = \(x) {seq(0, max(x))}) +
+  scale_y_continuous(breaks = \(x) {seq(0, max(x), 10)}) +
+  geom_pointrange(aes(ymin = 0, ymax = percent), color = "red") +
+  labs(x = "degré", y = "%") +
+  theme(
+    panel.grid.minor = element_blank(),
+    panel.grid.major = element_line(
+      color = "grey60",
+      linewidth = 0.1,
+      linetype = 3),
+    panel.background = element_blank()
+  ) +
+  labs(
+    title = "degree distribution"
+  )
+```
+
+3. Calcul **Density**
+
+
+
+
+
+## To have an idea about what can be done with visNetwork and shiny
+
+```{r}
+#shiny::runApp(system.file("shiny", package = "visNetwork"))
+
+```
+
+
+
