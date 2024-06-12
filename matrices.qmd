@@ -112,18 +112,20 @@ df_degree_per_node %>%
     y = value, 
     shape = degree_type, 
     color = degree_type),
-    size = 2
+    size = 4,
+    alpha = 0.6
   ) +
   labs(x = "noeud", y = "degré") +
   scale_x_continuous(breaks = 1:n) +
   scale_y_continuous(
-    breaks = \(x) {seq(0, max(x))}) +
+    breaks = \(x) {seq(0, max(x))},
+    limits = \(x) {c(0, max(x))}) +
   theme(
     panel.grid.minor = element_blank(),
     panel.grid.major = element_line(
-      color = "grey60",
-      linewidth = 0.1,
-      linetype = 3),
+      color = "grey90",
+      linewidth = 0.5,
+      linetype = 1),
     panel.background = element_blank(),
     legend.position = "right"
   ) +
@@ -131,6 +133,32 @@ df_degree_per_node %>%
     title = "degree per node",
     
   )
+
+df_degree_per_node |> 
+  dplyr::filter(degree_type != "all") |> 
+  ggplot(aes(x = node, y = value, fill = degree_type)) +
+  geom_col() +
+  scale_x_continuous(breaks = 1:n) +
+  scale_y_continuous(
+    breaks = \(x) {seq(0, max(x), 2)},
+    limits = \(x) {c(0, max(x))}) +
+  theme(
+    panel.grid.minor = element_blank(),
+    panel.grid.major = element_line(
+      color = "grey90",
+      linewidth = 0.5,
+      linetype = 1),
+    panel.grid.minor.y = element_line(
+      color = "grey60",
+      linewidth = 0.5,
+      linetype = 3),
+    panel.background = element_blank(),
+    legend.position = "right"
+  ) +
+  labs(
+    title = "degree per node",
+  )
+  
 
 ```
 
