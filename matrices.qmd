@@ -12,6 +12,12 @@ library(tidyr)
 ```
 
 ## Taille de la matrice carrée : n = 10
+
+::: {.callout-note collapse="false"}
+
+Attention les graphes considérés sont des graphes orientés ("directed graphs") et donc chaque valeur 1 de la matrice $A$ correspond à un arc (ou arête orientée).
+Alors que pour des graphes non orientés nous retrouvons $2n$ valeurs $1$ à l'intérieur de la matrice $A$, qui correspondront à $n$ arêtes (et non pas des arcs si l'on considère la terminologie officielle)
+:::
  
 ```{r}
 n <- 10
@@ -57,17 +63,23 @@ visNetwork(nodes = data$nodes, edges = data$edges) |>
 1. Calcul des degrés de chaque noeud :
 
   - calculé manuellement à partir de la matrice d'adjacence $A$
+  
+  
+  $$out.degree_i=\sum_{j=1}^n A[i,\ j]$$
+  
+  $$in.degree_i=\sum_{j=1}^n A[j,\ i]$$
+
 
 ```{r}
 #| label: degree_from_A
 #| 
-degre_out <- 1:n |> sapply(\(x) {sum(A[x, ])}) 
-degre_in <- 1:n |>  sapply(\(x) {sum(A[, x])})
-degre_all <- degre_out + degre_in
+out.degree <- 1:n |> sapply(\(x) {sum(A[x, ])}) 
+in.degree <- 1:n |>  sapply(\(x) {sum(A[, x])})
+all.degree <- out.degree + in.degree
 
-degre_out
-degre_in
-degre_all
+out.degree
+in.degree
+all.degree
 
 ```
 
@@ -92,12 +104,12 @@ degree_all
 
 df_degree_per_node <- data.frame(
   node = 1:length(V(G)), 
-  degre_all = degre_all,
-  degre_in = degre_in,
-  degre_out = degre_out
+  degree_all = degree_all,
+  degree_in = degree_in,
+  degree_out = degree_out
 ) |> 
   pivot_longer(
-    cols = c(degre_all, degre_in, degre_out), 
+    cols = c(degree_all, degree_in, degree_out), 
     names_prefix = "degre_",
     names_to = "degree_type", 
     values_to = "value"
@@ -171,12 +183,12 @@ $$P(k) = \frac{n_k}{n}$$ avec $n_k$ = number of vertices with degree $k$
   - calculé manuellement à partir de la matrice d'adjacence $A$
 
 ```{r}
-degre_distrib <- proportions(table(degre_all))
-degre_distrib
+degree.distrib <- proportions(table(all.degree))
+degree.distrib
 
 ```
 
-  - calculé à partir du graph $G$ avec la fonction`degree_distribution` du package ìgraph`
+  - calculé à partir du graph $G$ avec la fonction`degree_distribution` du package `igraph`
 
 ```{r}
 
@@ -205,9 +217,50 @@ df_degree_distrib |>
 
 3. Calcul **Density**
 
+La mesure de densité d'un graphe donne une idée générale de la structure du graphe.
 
+> If we find that a graph is not dense, we may use data structures for sparse graphs ("graphe creux" in French) for more efficient computations than done by dense graph structures such as adjacency or incidence matrices.
 
+La densité d'un graphe $G$ notée $\rho(G)$ est le ratio du nombre $m$ de ses arêtes rapporté au nombre maximum d'arêtes possibles $n_{max}$ pour ce graphe
 
+$$\rho(G)=\frac{m}{n_{max}},\ avec\ n_{max}=\frac{n(n-1)}{2}$$
+$n$ représente ici le nombre de sommets ou noeuds du graphe.
+
+$$soit\ \rho(G)=\frac{2m}{n(n-1)}$$ 
+
+Si l'on considère un graphe orienté et que $m$ représente le nombre d'arcs (arête orientée), le nombre d'arcs maximal devient $n_{max}=n(n-1)$ et $\rho(G)=\frac{m}{n(n-1)}$
+
+  - calculé manuellement à partir de la matrice d'adjacence $A$
+  
+```{r}
+density_A <- sum(A)/(n * (n - 1)) 
+density_A
+```
+
+  - calculé à partir du graph $G$ avec la fonction`edge_density` du package `igraph`
+
+```{r}
+density_G <- edge_density(graph = G, loops = FALSE)
+density_G
+```
+
+3. Calcul **Clustering Coefficient**
+
+- pour un sommet $v$ donné
+
+The clustering coefficient of a vertex $v$ is the ratio of total numbers of edges between the neighbors of $v$ to the maximum numbers of edges possible between these negihbors
+
+Soit $N(v)$ l'ensemble des $k$ sommets voisins de $v$ dans un graphe $G$.
+
+Le nombre maximum possible $k_{max}$ d'arêtes connectant les sommets de $N(v)$ est $$k_{max}=\frac{k(k-1)}{2}$$
+
+Le **Clustering Coefficient** $CC(v)$ vaut alors $$CC(v)=\frac{2x}{k(k-1)}$$
+où $x$ représente le nombre d'arêtes connectant les sommets de $N(v)$ entre eux.
+
+- pour le graphe $G$
+
+Le **average clustering coefficient** du graphe $G$ noté $CC(G)$ vaut alors
+$$CC(G)=\frac{1}{n}\sum_{v\in V} CC(v)$$
 
 ## To have an idea about what can be done with visNetwork and shiny
 
