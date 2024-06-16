@@ -248,7 +248,7 @@ density_G
 
 - pour un sommet $v$ donné
 
-The clustering coefficient of a vertex $v$ is the ratio of total numbers of edges between the neighbors of $v$ to the maximum numbers of edges possible between these negihbors
+The clustering coefficient of a vertex $v$ is the ratio of total numbers of edges between the neighbors of $v$ to the maximum numbers of edges possible between these neighbors
 
 Soit $N(v)$ l'ensemble des $k$ sommets voisins de $v$ dans un graphe $G$.
 
@@ -257,10 +257,58 @@ Le nombre maximum possible $k_{max}$ d'arêtes connectant les sommets de $N(v)$ 
 Le **Clustering Coefficient** $CC(v)$ vaut alors $$CC(v)=\frac{2x}{k(k-1)}$$
 où $x$ représente le nombre d'arêtes connectant les sommets de $N(v)$ entre eux.
 
+
 - pour le graphe $G$
 
 Le **average clustering coefficient** du graphe $G$ noté $CC(G)$ vaut alors
 $$CC(G)=\frac{1}{n}\sum_{v\in V} CC(v)$$
+
+  - calcul manuel à partir de la matrice d'adjacence $A$
+
+```{r}
+# recherche des voisins dans un graphe orienté
+# 
+l_voisins.out <- lapply(1:n, \(x) {(1:n)[A[x,] == 1]})
+l_voisins.in <- lapply(1:n, \(x) {(1:n)[A[,x] == 1]})
+l_voisins <- purrr::map2(l_voisins.in, l_voisins.out, base::union)
+
+# calcul du nombre d'arcs entre voisins
+# 
+total_arcs_voisins <- function(matrice, v_voisins) {
+  total <- 0
+  combinaisons <- t(combn(v_voisins, 2))
+  for (ligne in 1:nrow(combinaisons)) {
+    total <- total +
+      matrice[combinaisons[ligne, 1], combinaisons[ligne, 2]] + 
+      matrice[combinaisons[ligne, 2], combinaisons[ligne, 1]]
+  }
+  return(total)
+}
+
+arcs_entre_voisins <- sapply(l_voisins, \(x) {total_arcs_voisins(A, x)})
+
+# nombre d'arc maximums entre voisins pour un graphe orienté
+k_max <- sapply(l_voisins, \(x) {length(x) * (length(x) - 1)})
+
+
+# clustering coefficient pour chaque sommet
+CC <- arcs_entre_voisins/k_max
+CC
+
+# clustering coefficient du graphe
+CC_moyen <- sum(CC)/n
+CC_moyen
+
+```
+
+  - calculé à partir du graph $G$ avec la fonction `transitivity` du package `igraph`
+
+```{r}
+transitivity(G)
+
+```
+
+
 
 ## To have an idea about what can be done with visNetwork and shiny
 
