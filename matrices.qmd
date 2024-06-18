@@ -1,3 +1,8 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 # Matrices et réseaux
 
 ```{r}
@@ -304,9 +309,33 @@ CC_moyen
   - calculé à partir du graph $G$ avec la fonction `transitivity` du package `igraph`
 
 ```{r}
-transitivity(G)
+# clustering coefficient for each node
+transitivity(G, type = "local")
+
+# clustering coefficient for the graph
+transitivity(G, type = "global")
+```
+
+Le résultat différent est à expliquer (0.679558 au lieu de 0.4163095)
+
+
+4. Calcul du matching index
+
+
+
+```{r}
+B <- c(0,1,0,0,0,0,0,1,1,0,1,0,0,0,1,0,0,1,0,1,0,0,1,0,0,0,1,0,1,1,1,0,0,0,0,1,0,1,0,0,0,0,0,1,1,0,1,0,0,1,1,1,0,1,0,1,1,0,0,0,0,0,1,0)
+A <- matrix(B, nrow = 8, ncol = 8)
+G <- graph_from_adjacency_matrix(A)
+# clustering coefficient for each node
+transitivity(G, type = "local")
+
+# clustering coefficient for the graph
+transitivity(G, type = "global")
 
 ```
+
+
 
 
 
