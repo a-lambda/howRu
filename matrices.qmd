@@ -324,8 +324,44 @@ Le résultat différent est à expliquer (0.679558 au lieu de 0.4163095)
 
 
 ```{r}
+n <- 8
+
 B <- c(0,1,0,0,0,0,0,1,1,0,1,0,0,0,1,0,0,1,0,1,0,0,1,0,0,0,1,0,1,1,1,0,0,0,0,1,0,1,0,0,0,0,0,1,1,0,1,0,0,1,1,1,0,1,0,1,1,0,0,0,0,0,1,0)
-A <- matrix(B, nrow = 8, ncol = 8)
+A <- matrix(B, nrow = n, ncol = n)
+
+# recherche des voisins dans un graphe orienté
+# 
+l_voisins.out <- lapply(1:n, \(x) {(1:n)[A[x,] == 1]})
+l_voisins.in <- lapply(1:n, \(x) {(1:n)[A[,x] == 1]})
+l_voisins <- purrr::map2(l_voisins.in, l_voisins.out, base::union)
+
+# calcul du nombre d'arcs entre voisins
+# 
+total_arcs_voisins <- function(matrice, v_voisins) {
+  total <- 0
+  combinaisons <- t(combn(v_voisins, 2))
+  for (ligne in 1:nrow(combinaisons)) {
+    total <- total +
+      matrice[combinaisons[ligne, 1], combinaisons[ligne, 2]] + 
+      matrice[combinaisons[ligne, 2], combinaisons[ligne, 1]]
+  }
+  return(total)
+}
+
+arcs_entre_voisins <- sapply(l_voisins, \(x) {total_arcs_voisins(A, x)})
+
+# nombre d'arc maximums entre voisins pour un graphe orienté
+k_max <- sapply(l_voisins, \(x) {length(x) * (length(x) - 1)})
+
+
+# clustering coefficient pour chaque sommet
+CC <- arcs_entre_voisins/k_max
+CC
+
+# clustering coefficient du graphe
+CC_moyen <- sum(CC)/n
+CC_moyen
+
 G <- graph_from_adjacency_matrix(A)
 # clustering coefficient for each node
 transitivity(G, type = "local")
@@ -349,12 +385,12 @@ B.add_edges_from([('A', 1), ('B', 1), ('C', 1), ('C', 3), ('D', 2), ('D', 3), ('
 bipartite.sets(B)
 bipartite.is_bipartite(B)
 B.add_edge('A', 'B')
-bipartite.is_bipartite(B))
+bipartite.is_bipartite(B)
 B.remove_edge('A', 'B')
 X = set([1, 2, 3, 4])
-bipartite.is_bipartite_node_set(B, X))
+bipartite.is_bipartite_node_set(B, X)
 X = set(['A','B','C','D','E'])
-bipartite.is_bipartite_node_set(B, X))
+bipartite.is_bipartite_node_set(B, X)
 
 B=nx.Graph()
 B.add_edges_from([('A',1), ('B',1), ('C',1), ('D',1), ('H',1),
@@ -370,10 +406,6 @@ plt.show()
 
 ```
 
-```{r}
-
-```
-
 
 ## To have an idea about what can be done with visNetwork and shiny
 
@@ -381,6 +413,3 @@ plt.show()
 #shiny::runApp(system.file("shiny", package = "visNetwork"))
 
 ```
-
-
-
