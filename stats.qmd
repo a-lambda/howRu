@@ -1,0 +1,45 @@
+---
+title: "tests"
+editor: visual
+---
+
+Quantifier la variance de 1000 échantillons de 1000 individus pris dans une population de 1 million d'individus (les mesures prises en compte suivent une loi normale)
+
+
+```{r}
+set.seed(1967)
+taille_population <- 1e6
+mesure_moyenne <- 175
+ecart_type <- 25
+
+population_loi_normale <- rnorm(taille_population, mean = mesure_moyenne, sd = ecart_type)
+
+population <- population_loi_normale
+mean(population)
+var(population)
+sd(population)
+
+hist(population)
+
+echantillon_from_population <- function(population, size) {
+  taille_population <- length(population)
+  indices_echantillon <- sample(1:taille_population, size = size, replace = FALSE)
+  echantillon <- population[indices_echantillon]
+  return(echantillon)
+}
+
+# get n samples of k individuals from the global population
+
+n <- 1000
+echantillons <- lapply(1:n, \(x) echantillon_from_population(population, size = 1000))
+moyennes_echantillons <- sapply(echantillons, mean)
+
+hist(moyennes_echantillons)
+ecart_type_moyennes_echantillons <- sd(moyennes_echantillons)
+mean_moyennes_echantillons <- mean(moyennes_echantillons)
+mean_moyennes_echantillons
+ecart_type_moyennes_echantillons
+c(mean_moyennes_echantillons - 2 * ecart_type_moyennes_echantillons, mean_moyennes_echantillons + 2 * ecart_type_moyennes_echantillons)
+
+```
+
