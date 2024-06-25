@@ -135,6 +135,28 @@ won_as_white
 ```
 
 
+```{r}
+library(tidyverse)
+chess <- read_delim("data/chess_graph.txt", col_names = c("white", "black", "outcome")) |> 
+  separate_wider_delim(cols = "outcome", delim = "\t", names = c("outcome", "timestamp")) |> 
+  mutate(
+    timestamp = as.double(timestamp),
+    outcome = as.integer(outcome)
+  )
+
+won_as_white <- chess |>
+  filter(outcome == 1) |> 
+  group_by(white) |> 
+  summarize(somme = sum(outcome))
+
+won_as_black <- chess |>
+  filter(outcome == -1) |> 
+  group_by(black) |> 
+  summarize(somme = -sum(outcome))
+
+won <- won_as_white 
+
+```
 
 
 
