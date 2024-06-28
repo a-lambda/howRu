@@ -1,0 +1,130 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+
+```
+
+# Test python file read
+
+```{python}
+
+import os
+os.getcwd()
+with open('data/test.txt', 'r') as file:
+  lines = file.readlines()
+
+for line in lines:
+  print(line)
+```
+
+# Loading graphs in Networkx
+
+```{python}
+
+import networkx as nx
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from networkx import bipartite
+
+```
+
+## Creating a graph from a list of edges
+
+```{python}
+
+plt.close()
+G = nx.Graph()
+G.add_edges_from([(0, 1), (0, 2), (0, 3), (0, 5),
+                  (1, 3), (1, 6), (3, 4), (4, 5),
+                  (4, 5), (4, 7), (5, 8), (8, 9)])
+nx.draw_networkx(G)
+plt.show()
+
+```
+
+## Creating a graph from loading an adjacency list file
+
+```{python}
+
+plt.close()
+G = nx.read_adjlist('./data/G_adjlist.txt', nodetype=int)
+G.edges
+nx.draw_networkx(G)
+plt.show()
+
+```
+
+## Creating a graph from an adjacency matrix
+
+```{python}
+
+G = nx.Graph()
+G_mat = np.array([[0, 1, 1, 1, 0, 1, 0, 0, 0, 0],
+                  [1, 0, 0, 1, 0, 0, 1, 0, 0, 0],
+                  [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                  [1, 1, 0, 0, 1, 0, 0, 0, 0, 0],
+                  [0, 0, 0, 1, 0, 1, 0, 1, 0, 0],
+                  [0, 0, 0, 0, 1, 0, 0, 0, 1, 0],
+                  [0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+                  [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+                  [0, 0, 0, 0, 0, 1, 0, 0, 0, 1],
+                  [0, 0, 0, 0, 0, 0, 0, 0, 1, 0]])
+G_mat
+G = nx.Graph(G_mat)
+nx.draw_networkx(G)
+plt.show()
+
+```
+
+
+## Creating a graph from and edge list file
+
+```{python}
+
+plt.close()
+G = nx.read_edgelist('data/G_edgelist.txt', data=[('weight', int)], nodetype=int)
+G.edges(data=True)
+nx.draw_networkx(G)
+plt.show()
+
+```
+
+## Creating a graph from a panda dataframe
+
+```{python}
+
+G_df = pd.read_csv('data/G_edgelist.txt',
+                   sep='\s+',
+                   header=None,
+                   names=['n1', 'n2', 'weight'])
+G_df                   
+G = nx.from_pandas_edgelist(G_df, 'n1', 'n2', edge_attr='weight')
+G.edges(data=True)
+nx.draw_networkx(G)
+plt.show()
+
+```
+
+## Chess example
+
+```{python}
+
+chess = nx.read_edgelist('data/chess_graph.txt', 
+                         data=[('outcome', int), ('timestamp', float)],
+                         create_using=nx.MultiDiGraph())
+                         
+chess.is_directed(), chess.is_multigraph()
+edges = chess.edges(data=True)
+type(edges)
+# games_played = dict(chess.degree())
+# games_played
+# max_value = max(games_played.values())
+# max_key = [i for i in games_played.keys() if games_played[i] == max_value ]
+# print(f'player {max_key}\n{max_value} games')
+
+```
