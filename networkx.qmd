@@ -128,19 +128,95 @@ won_as_white
 
 ## Coefficient de regroupement
 
+1. graphe exemple :
+
+```{python}
+
+plt.close()
+G = nx.Graph()
+G.add_edges_from([('A', 'B'), ('A', 'C'), ('A', 'K'), ('B', 'K'), 
+                  ('B', 'C'), ('C', 'F'), ('F', 'G'), ('C', 'E'), 
+                  ('F', 'E'), ('D', 'E'), ('E', 'H'), ('I', 'J')])
+nx.draw_networkx(G)
+plt.show()
+
+```
+
+2. local clustering coefficient
+
+```{python}
+
+nx.clustering(G, 'F')
+nx.clustering(G, 'A')
+nx.clustering(G, 'J')
+
+```
+
+3. global clustering coefficient
+
+  - 1ère approche :
+  
+  average local clustering coefficient ovar all nodes in the graph
+
+```{python}
+
+nx.average_clustering(G)
+avg = 0
+for node in nx.nodes(G):
+  avg += nx.clustering(G, node)
+avg/len(nx.nodes(G))
+```
+
+  - 2ème approche :
+  
+  transitivity in a graph
+  
+  $$transitivity = \frac{\#\ of\ existing\ triplets}{\#\ of\ possible\ triplets}$$
+
+```{python}
+
+nx.transitivity(G)
+
+```
+
+  - Test de calculs de transitivité sur un graphe à 5 sommets
+  
+```{python}
+
+plt.close()
+G0 = nx.Graph()
+G0.add_edges_from([('A', 'B'), ('A', 'C'), ('A', 'D'), ('A', 'E')])
+nx.draw_networkx(G0)
+plt.show()
+nx.transitivity(G0) 
+nx.average_clustering(G0)
+
+additional_edges = [('B', 'C'), ('C', 'D'), ('D', 'E'), 
+                    ('B', 'E'), ('C', 'E'), ('B', 'D')]
 
 
+for edge in additional_edges: 
 
+  plt.close()
+  G0.add_edge(*edge)
+  nx.draw_networkx(G0)
+  plt.show()
+  nx.transitivity(G0), nx.average_clustering(G0)
 
+# successive values of transitivity ?
+# = (3 * 0)/4
+# = (3 * 1)/8
+# = (3 * 2)/11
+# = (3 * 3)/14
+# = (3 * 4)/18
+# = (3 * 7)/24
+# = (3 * 10)/30
 
+```
 
+5. transitivity vs. average clustering coefficient
 
-
-
-
-
-
-
+Both measure the tendency for edges to form triangles. Transitivity weights node with large degree higher.
 
 ## Mesures de distance
 
@@ -225,16 +301,36 @@ nx.radius(G)
 
 ```
 
+9. periphery of a graph (périphérie ? d'un graphe)
 
+ensemble des noeuds qui ont une excentricité égale au diamètre du graphe
+
+```{python}
+
+nx.periphery(G)
+
+```
+
+10. center of a graph (centre d'un graphe)
+
+ensemble des noeuds qui ont une excentricité égale au rayon du graphe
+
+```{python}
+
+nx.center(G)
+
+```
 
 
 ## Karate club network
 
 ```{python}
 
+plt.close()
 G = nx.karate_club_graph()
 G = nx.convert_node_labels_to_integers(G, first_label=1)
-
+nx.draw_networkx(G)
+plt.show()
 
 ```
 
