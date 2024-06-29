@@ -4,12 +4,6 @@ editor_options:
   chunk_output_type: console
 ---
 
-```{r}
-sample(150:200, 100, replace = TRUE)
-
-```
-
-
 # Loading graphs in Networkx
 
 ```{python}
@@ -22,15 +16,11 @@ from networkx import bipartite
 
 ```
 
-
-
-
-
-
 ## Creating a graph from a list of edges
 
 ```{python}
 
+plt.close()
 G = nx.Graph()
 G.add_edges_from([(0, 1), (0, 2), (0, 3), (0, 5),
                   (1, 3), (1, 6), (3, 4), (4, 5),
@@ -44,6 +34,7 @@ plt.show()
 
 ```{python}
 
+plt.close()
 G = nx.read_adjlist('./data/G_adjlist.txt', nodetype=int)
 G.edges
 nx.draw_networkx(G)
@@ -77,7 +68,8 @@ plt.show()
 
 ```{python}
 
-G = nx.read_edgelist('data/G_edge_list.txt', data=[('weight', int)], nodetype=int)
+plt.close()
+G = nx.read_edgelist('data/G_edgelist.txt', data=[('weight', int)], nodetype=int)
 G.edges(data=True)
 nx.draw_networkx(G)
 plt.show()
@@ -88,7 +80,7 @@ plt.show()
 
 ```{python}
 
-G_df = pd.read_csv('data/G_edge_list.txt',
+G_df = pd.read_csv('data/G_edgelist.txt',
                    sep='\s+',
                    header=None,
                    names=['n1', 'n2', 'weight'])
@@ -133,6 +125,122 @@ won_as_white
 #win_count.head()
 
 ```
+
+## Coefficient de regroupement
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Mesures de distance
+
+1. graphe exemple :
+
+```{python}
+
+plt.close()
+G = nx.Graph()
+G.add_edges_from([('A', 'B'), ('A', 'K'), ('B', 'K'), ('B', 'C'),
+                  ('C', 'F'), ('F', 'G'), ('C', 'E'), ('F', 'E'),
+                  ('D', 'E'), ('E', 'I'), ('E', 'H'), ('I', 'J')])
+nx.draw_networkx(G)
+plt.show()
+
+```
+
+2. bread-first search tree (arbre BFS)
+
+```{python}
+
+plt.close()
+T = nx.bfs_tree(G, 'A')
+nx.draw_networkx(T)
+plt.show()
+list(T.edges)
+
+```
+
+3. shortest path (plus court chemin)
+
+```{python}
+
+nx.shortest_path(G, 'A', 'H')
+
+```
+
+4. shortest path length (plus courte distance)
+
+```{python}
+
+nx.shortest_path_length(G, 'A', 'H')
+nx.shortest_path_length(G, 'A')
+
+```
+
+5. average distance (distance moyenne)
+
+```{python}
+
+nx.average_shortest_path_length(G)
+
+```
+
+6. diamètre (diameter)
+
+distance maximum entre 2 paires de sommets
+
+```{python}
+
+nx.diameter(G)
+
+```
+
+7. eccentricity of a node (excentricité d'un sommet)
+
+distance la plus grande entre un sommet et tous les autres sommets
+
+```{python}
+
+nx.eccentricity(G)
+
+```
+
+8. radius of a graph (rayon d'un grahe) 
+
+valeur de l'excentricité minimale
+
+```{python}
+
+nx.radius(G)
+
+```
+
+
+
+
+## Karate club network
+
+```{python}
+
+G = nx.karate_club_graph()
+G = nx.convert_node_labels_to_integers(G, first_label=1)
+
+
+```
+
+
+
+
 
 
 ```{r}
