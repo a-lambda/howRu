@@ -329,9 +329,26 @@ nx.center(G)
 plt.close()
 G = nx.karate_club_graph()
 G = nx.convert_node_labels_to_integers(G, first_label=1)
+nx.average_shortest_path_length(G)
+nx.radius(G)
+nx.diameter(G)
+nx.center(G)
+nx.periphery(G)
 nx.draw_networkx(G)
 plt.show()
 
+```
+
+
+## Connected graphs
+
+```{python}
+plt.close()
+G = nx.DiGraph()
+G.add_edges_from([('A', 'B'), ('C', 'A'), ('A', 'E'), ('G', 'A'), ('A', 'N'), ('B', 'C'), ('D', 'B'), ('B', 'E'), ('C', 'D'), ('E', 'C'), ('D', 'E'), ('E', 'D'), ('F', 'G'), ('I', 'F'), ('J', 'F'), ('H', 'G'), ('I', 'G'), ('G', 'J'), ('I', 'H'), ('H', 'I'), ('I', 'J'), ('J', 'O'), ('O', 'J'), ('K', 'M'), ('K', 'L'), ('O', 'K'), ('O', 'L'), ('N', 'L'), ('L', 'M'), ('N', 'O')])
+nx.draw_networkx(G)
+plt.show()
+nx.minimum_edge_cut(G, 'H', 'O')
 ```
 
 
