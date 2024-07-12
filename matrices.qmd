@@ -5,15 +5,27 @@ editor_options:
 ---
 # Matrices et réseaux
 
+## Chargement des paquets pour R
+
 ```{r}
 #| label: loading_packages
 #| message: false
 #| warning: false
-#| echo: false
+#| echo: true
 library(igraph)
 library(visNetwork)
 library(ggplot2)
 library(tidyr)
+```
+
+## Paquets nécessaires pour Python
+
+```{python}
+import networkx as nx
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from networkx import bipartite
 ```
 
 ## Taille de la matrice carrée : n = 10
@@ -23,7 +35,11 @@ library(tidyr)
 Attention les graphes considérés sont des graphes orientés ("directed graphs") et donc chaque valeur 1 de la matrice $A$ correspond à un arc (ou arête orientée).
 Alors que pour des graphes non orientés nous retrouvons $2n$ valeurs $1$ à l'intérieur de la matrice $A$, qui correspondront à $n$ arêtes (et non pas des arcs si l'on considère la terminologie officielle)
 :::
- 
+
+1. **Création des matrices aléatoires tests**
+
+ - avec R
+
 ```{r}
 n <- 10
 
@@ -31,7 +47,7 @@ matrice <- function(n) {
   set.seed(1967)
   v <- sample(c(0,1), size = n^2, replace = TRUE)
   M <- matrix(v, nrow = n, ncol = n)
-  # delete edges from node to itself
+  # delete loops
   for (i in 1:n) {
     M[i, i] <- 0
   }
@@ -40,12 +56,59 @@ matrice <- function(n) {
 
 A <- matrice(n)
 A
-G <- graph_from_adjacency_matrix(A)
-data <- toVisNetworkData(G)
-
 ```
 
+  - avec Python
 
+```{python}
+n= 10
+
+def matrice(n):
+  np.random.seed(1967)
+  v = np.random.randint(0, 2, size = (n, n))
+  # delete loops
+  for i in range(n):
+    v[i, i] = 0
+  return v
+  
+A = matrice(10)
+A
+```
+
+2. **Création d'un objet graphe**
+
+  - avec R :
+
+    - Création d'un objet graphe (igraph) depuis la matrice A
+
+
+```{r}
+G <- graph_from_adjacency_matrix(A)
+```
+
+    - Création d'un objet graphe (visNetwork) depuis un objet graphe `igraph`
+
+```{r}
+data <- toVisNetworkData(G)
+```
+
+  - avec Python :
+
+```{python}
+G = nx.from_numpy_array(A, create_using=nx.DiGraph)
+```
+
+3. **Affichage des graphes**
+
+  - avec R :
+  
+    - graphe statique `igraph`
+  
+```{r}
+plot(G)
+```
+
+    - graphe dynamique `visNetwork`
 
 
 ```{r}
@@ -60,8 +123,86 @@ visNetwork(nodes = data$nodes, edges = data$edges) |>
   visNodes(color = list(hover = list(background = "yellow", border = "red"))) |>
   visEdges(color = list(highlight = "pink",hover = "red")) |> 
   visInteraction(hover = TRUE)
+```
+
+  - avec Python
+
+```{python}
+plt.close()
+nx.draw_networkx(G)
+plt.show()
+```
+
+# Chargement de données graphes
+
+La fonction `read_graph` permet de récupérer des données depuis différents formats     
+    - edgelist, 
+    - pajek, 
+    - ncol, 
+    - lgl, 
+    - graphml, 
+    - dimacs, 
+    - graphdb, 
+    - gml, 
+    - dl 
+
+## Depuis un fichier au format `edgelist`
+
+1. avec R
+
+```{r}
+G <- read_graph("data/G_edgelist.txt",  format = "edgelist")
+plot(G)
+```
+
+2. avec Python
+
+  - format `edgelist` simple
+
+```{python}
+G = nx.read_edgelist('data/G_edgelist.txt', nodetype=int)
+plt.close()
+nx.draw_networkx(G)
+plt.show()
+```
+
+Remarque : le même fichier donne des résultats différents avec R et  python
+
+  - format `edgelist` avec poids
+  
+```{python}
+G = nx.read_weighted_edgelist(
+  'data/G_edgelist_weighted.txt',
+  create_using=nx.DiGraph,
+  nodetype=int)
+G.edges(data=True)
+plt.close()
+nx.draw_networkx(G)
+plt.show()
+``` 
+
+Remarque : il est possible de lire le même fichier avec la function `read_edgelist`
+
+
+```{python}
+G = nx.read_edgelist(
+  'data/G_edgelist_weighted.txt', 
+  data=[('weight', int)], 
+  create_using=nx.DiGraph, 
+  nodetype=int)
+G.edges(data=True)
+plt.close()
+nx.draw_networkx(G)
+plt.show()
 
 ```
+
+
+
+
+
+
+
 
 ## Large graph analysis
 
