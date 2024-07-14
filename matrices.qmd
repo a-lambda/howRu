@@ -271,7 +271,14 @@ A4 = np.array([[0,1,0,0,0,0,0,1],
   
 2. Graphes en lien avec le cours `Python social network analysis`
 
+ - [Local clustering coefficient](https://www.coursera.org/learn/python-social-network-analysis/lecture/ZhNvi/clustering-coefficient)
 
+```{python}
+A = np.array([[]])
+
+
+
+```
 
 
 
